@@ -4,41 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt + Fit!</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        parchment: '#f5f5f7',
-                        canvas: '#ffffff',
-                        ink: '#1d1d1f',
-                        muted: '#7a7a7a',
-                        action: '#0066cc',
-                        hairline: '#e0e0e0',
-                        black: '#000000'
-                    },
-                    fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                    },
-                    fontSize: {
-                        nav: ['12px', { lineHeight: '1.0', letterSpacing: '-0.12px', fontWeight: '400' }],
-                        caption: ['14px', { lineHeight: '1.29', letterSpacing: '-0.224px', fontWeight: '400' }],
-                        body: ['17px', { lineHeight: '1.47', letterSpacing: '-0.374px', fontWeight: '400' }],
-                        strong: ['17px', { lineHeight: '1.24', letterSpacing: '-0.374px', fontWeight: '600' }],
-                        tagline: ['21px', { lineHeight: '1.19', letterSpacing: '0.231px', fontWeight: '600' }],
-                        display: ['34px', { lineHeight: '1.1', letterSpacing: '-0.374px', fontWeight: '600' }],
-                        hero: ['40px', { lineHeight: '1.1', letterSpacing: '-0.28px', fontWeight: '600' }],
-                    },
-                    borderRadius: {
-                        apple: '18px',
-                        pill: '9999px'
-                    }
-                }
-            }
-        }
-    </script>
+    <style>*{box-sizing:border-box;border:0 solid #e0e0e0}body,p,h1,h2,h3{margin:0}body,button,input,select{font-family:system-ui,sans-serif}button,input,select{font:inherit;color:inherit}button{background:transparent;cursor:pointer}button,label{touch-action:manipulation}button{min-height:44px}.field,input,select{font-size:16px}main{max-width:414px;margin:auto;min-height:100dvh}.hidden,[hidden]{display:none!important}.flex{display:flex}.block{display:block}.grid{display:grid}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.mx-auto{margin-inline:auto}.fixed{position:fixed}.sticky{position:sticky}.relative{position:relative}.absolute{position:absolute}.inset-0{inset:0}.object-cover{object-fit:cover}.overflow-hidden{overflow:hidden}.pointer-events-none{pointer-events:none}.rounded-apple{border-radius:18px}.rounded-pill,.rounded-full{border-radius:999px}.rounded-lg{border-radius:8px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.text-center{text-align:center}.text-right{text-align:right}.text-hero{font-size:40px}.text-display{font-size:34px}.text-tagline{font-size:21px}.text-caption{font-size:14px}.text-strong,.text-hero,.text-display,.text-tagline{font-weight:600}.text-body{font-size:17px}.font-medium{font-weight:500}.space-y-4>*+*{margin-top:16px}.space-y-2>*+*{margin-top:8px}.w-full{width:100%}.h-full{height:100%}.fixed.bottom-0{max-width:414px;margin:auto;padding-bottom:max(16px,env(safe-area-inset-bottom))}.view.active{animation:none!important}.min-h-screen{min-height:100vh}.max-w-\[414px\]{max-width:414px}.text-red-700{color:#b91c1c}.bg-transparent{background:transparent}.bg-action{background-color:#0066cc}.text-action{color:#0066cc}.border-action{border-color:#0066cc}.bg-canvas{background-color:white}.text-canvas{color:white}.border-canvas{border-color:white}.bg-parchment{background-color:#f5f5f7}.text-parchment{color:#f5f5f7}.border-parchment{border-color:#f5f5f7}.bg-ink{background-color:#1d1d1f}.text-ink{color:#1d1d1f}.border-ink{border-color:#1d1d1f}.bg-muted{background-color:#7a7a7a}.text-muted{color:#7a7a7a}.border-muted{border-color:#7a7a7a}.bg-white{background-color:white}.text-white{color:white}.border-white{border-color:white}.bg-black{background-color:black}.text-black{color:black}.border-black{border-color:black}.bg-hairline{background-color:#e0e0e0}.text-hairline{color:#e0e0e0}.border-hairline{border-color:#e0e0e0}.p-0{padding:0px}.p-1{padding:4px}.p-2{padding:8px}.p-3{padding:12px}.p-4{padding:16px}.p-5{padding:20px}.p-6{padding:24px}.p-8{padding:32px}.p-\[11px\]{padding:11px}.p-\[22px\]{padding:22px}.p-\[24px\]{padding:24px}.p-\[52px\]{padding:52px}.p-\[100px\]{padding:100px}.p-\[300px\]{padding:300px}.p-\[400px\]{padding:400px}.h-0{height:0px}.h-1{height:4px}.h-2{height:8px}.h-3{height:12px}.h-4{height:16px}.h-5{height:20px}.h-6{height:24px}.h-8{height:32px}.h-\[11px\]{height:11px}.h-\[22px\]{height:22px}.h-\[24px\]{height:24px}.h-\[52px\]{height:52px}.h-\[100px\]{height:100px}.h-\[300px\]{height:300px}.h-\[400px\]{height:400px}.w-0{width:0px}.w-1{width:4px}.w-2{width:8px}.w-3{width:12px}.w-4{width:16px}.w-5{width:20px}.w-6{width:24px}.w-8{width:32px}.w-\[11px\]{width:11px}.w-\[22px\]{width:22px}.w-\[24px\]{width:24px}.w-\[52px\]{width:52px}.w-\[100px\]{width:100px}.w-\[300px\]{width:300px}.w-\[400px\]{width:400px}.min-h-0{min-height:0px}.min-h-1{min-height:4px}.min-h-2{min-height:8px}.min-h-3{min-height:12px}.min-h-4{min-height:16px}.min-h-5{min-height:20px}.min-h-6{min-height:24px}.min-h-8{min-height:32px}.min-h-\[11px\]{min-height:11px}.min-h-\[22px\]{min-height:22px}.min-h-\[24px\]{min-height:24px}.min-h-\[52px\]{min-height:52px}.min-h-\[100px\]{min-height:100px}.min-h-\[300px\]{min-height:300px}.min-h-\[400px\]{min-height:400px}.mt-0{margin-top:0px}.mt-1{margin-top:4px}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mt-5{margin-top:20px}.mt-6{margin-top:24px}.mt-8{margin-top:32px}.mt-\[11px\]{margin-top:11px}.mt-\[22px\]{margin-top:22px}.mt-\[24px\]{margin-top:24px}.mt-\[52px\]{margin-top:52px}.mt-\[100px\]{margin-top:100px}.mt-\[300px\]{margin-top:300px}.mt-\[400px\]{margin-top:400px}.mb-0{margin-bottom:0px}.mb-1{margin-bottom:4px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}.mb-5{margin-bottom:20px}.mb-6{margin-bottom:24px}.mb-8{margin-bottom:32px}.mb-\[11px\]{margin-bottom:11px}.mb-\[22px\]{margin-bottom:22px}.mb-\[24px\]{margin-bottom:24px}.mb-\[52px\]{margin-bottom:52px}.mb-\[100px\]{margin-bottom:100px}.mb-\[300px\]{margin-bottom:300px}.mb-\[400px\]{margin-bottom:400px}.mr-0{margin-right:0px}.mr-1{margin-right:4px}.mr-2{margin-right:8px}.mr-3{margin-right:12px}.mr-4{margin-right:16px}.mr-5{margin-right:20px}.mr-6{margin-right:24px}.mr-8{margin-right:32px}.mr-\[11px\]{margin-right:11px}.mr-\[22px\]{margin-right:22px}.mr-\[24px\]{margin-right:24px}.mr-\[52px\]{margin-right:52px}.mr-\[100px\]{margin-right:100px}.mr-\[300px\]{margin-right:300px}.mr-\[400px\]{margin-right:400px}.px-0{padding-inline:0px}.px-1{padding-inline:4px}.px-2{padding-inline:8px}.px-3{padding-inline:12px}.px-4{padding-inline:16px}.px-5{padding-inline:20px}.px-6{padding-inline:24px}.px-8{padding-inline:32px}.px-\[11px\]{padding-inline:11px}.px-\[22px\]{padding-inline:22px}.px-\[24px\]{padding-inline:24px}.px-\[52px\]{padding-inline:52px}.px-\[100px\]{padding-inline:100px}.px-\[300px\]{padding-inline:300px}.px-\[400px\]{padding-inline:400px}.py-0{padding-block:0px}.py-1{padding-block:4px}.py-2{padding-block:8px}.py-3{padding-block:12px}.py-4{padding-block:16px}.py-5{padding-block:20px}.py-6{padding-block:24px}.py-8{padding-block:32px}.py-\[11px\]{padding-block:11px}.py-\[22px\]{padding-block:22px}.py-\[24px\]{padding-block:24px}.py-\[52px\]{padding-block:52px}.py-\[100px\]{padding-block:100px}.py-\[300px\]{padding-block:300px}.py-\[400px\]{padding-block:400px}.pt-0{padding-top:0px}.pt-1{padding-top:4px}.pt-2{padding-top:8px}.pt-3{padding-top:12px}.pt-4{padding-top:16px}.pt-5{padding-top:20px}.pt-6{padding-top:24px}.pt-8{padding-top:32px}.pt-\[11px\]{padding-top:11px}.pt-\[22px\]{padding-top:22px}.pt-\[24px\]{padding-top:24px}.pt-\[52px\]{padding-top:52px}.pt-\[100px\]{padding-top:100px}.pt-\[300px\]{padding-top:300px}.pt-\[400px\]{padding-top:400px}.pr-0{padding-right:0px}.pr-1{padding-right:4px}.pr-2{padding-right:8px}.pr-3{padding-right:12px}.pr-4{padding-right:16px}.pr-5{padding-right:20px}.pr-6{padding-right:24px}.pr-8{padding-right:32px}.pr-\[11px\]{padding-right:11px}.pr-\[22px\]{padding-right:22px}.pr-\[24px\]{padding-right:24px}.pr-\[52px\]{padding-right:52px}.pr-\[100px\]{padding-right:100px}.pr-\[300px\]{padding-right:300px}.pr-\[400px\]{padding-right:400px}.pb-0{padding-bottom:0px}.pb-1{padding-bottom:4px}.pb-2{padding-bottom:8px}.pb-3{padding-bottom:12px}.pb-4{padding-bottom:16px}.pb-5{padding-bottom:20px}.pb-6{padding-bottom:24px}.pb-8{padding-bottom:32px}.pb-\[11px\]{padding-bottom:11px}.pb-\[22px\]{padding-bottom:22px}.pb-\[24px\]{padding-bottom:24px}.pb-\[52px\]{padding-bottom:52px}.pb-\[100px\]{padding-bottom:100px}.pb-\[300px\]{padding-bottom:300px}.pb-\[400px\]{padding-bottom:400px}.top-0{top:0px}.top-1{top:4px}.top-2{top:8px}.top-3{top:12px}.top-4{top:16px}.top-5{top:20px}.top-6{top:24px}.top-8{top:32px}.top-\[11px\]{top:11px}.top-\[22px\]{top:22px}.top-\[24px\]{top:24px}.top-\[52px\]{top:52px}.top-\[100px\]{top:100px}.top-\[300px\]{top:300px}.top-\[400px\]{top:400px}.left-0{left:0px}.left-1{left:4px}.left-2{left:8px}.left-3{left:12px}.left-4{left:16px}.left-5{left:20px}.left-6{left:24px}.left-8{left:32px}.left-\[11px\]{left:11px}.left-\[22px\]{left:22px}.left-\[24px\]{left:24px}.left-\[52px\]{left:52px}.left-\[100px\]{left:100px}.left-\[300px\]{left:300px}.left-\[400px\]{left:400px}.right-0{right:0px}.right-1{right:4px}.right-2{right:8px}.right-3{right:12px}.right-4{right:16px}.right-5{right:20px}.right-6{right:24px}.right-8{right:32px}.right-\[11px\]{right:11px}.right-\[22px\]{right:22px}.right-\[24px\]{right:24px}.right-\[52px\]{right:52px}.right-\[100px\]{right:100px}.right-\[300px\]{right:300px}.right-\[400px\]{right:400px}.bottom-0{bottom:0px}.bottom-1{bottom:4px}.bottom-2{bottom:8px}.bottom-3{bottom:12px}.bottom-4{bottom:16px}.bottom-5{bottom:20px}.bottom-6{bottom:24px}.bottom-8{bottom:32px}.bottom-\[11px\]{bottom:11px}.bottom-\[22px\]{bottom:22px}.bottom-\[24px\]{bottom:24px}.bottom-\[52px\]{bottom:52px}.bottom-\[100px\]{bottom:100px}.bottom-\[300px\]{bottom:300px}.bottom-\[400px\]{bottom:400px}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-40{z-index:40}.opacity-0{opacity:0.0}.opacity-25{opacity:0.25}.opacity-75{opacity:0.75}.opacity-80{opacity:0.8}.w-1\/2{width:50.0%}.w-1\/3{width:33.333333333333336%}.w-2\/3{width:66.66666666666667%}</style>
     <style>
         body {
             background-color: #f5f5f7;
@@ -62,7 +28,7 @@
         * { -ms-overflow-style: none; scrollbar-width: none; }
     .field{display:block;width:100%;min-width:0;border:1px solid #d5d5d7;background:white;border-radius:9px;padding:10px;font-size:14px;color:#1d1d1f}.item-card,.history-card{border:1px solid #e0e0e0;background:white;border-radius:12px;padding:14px;margin-bottom:12px}.item-controls{display:grid;grid-template-columns:1fr 1.3fr auto;gap:8px;margin-top:10px;align-items:center}.small-button{background:#0066cc;color:white;padding:10px 13px;border-radius:999px;font-size:13px;white-space:nowrap}.history-open{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:10px}.history-open strong{overflow-wrap:anywhere}.detail-row{display:flex;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid #e0e0e0}.category-row{display:flex;gap:10px;margin-bottom:12px}button:disabled{opacity:.5;cursor:wait}#status:empty{display:none}#status{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);width:380px;background:#1d1d1f;color:white;border-radius:12px;padding:12px 16px;font-size:12px;z-index:60;pointer-events:none}#receipt-preview{max-height:200px;width:100%;object-fit:contain;margin-bottom:16px}input,select{min-width:0}#ocr-text{white-space:pre-wrap;font-size:12px;user-select:text}.view{padding-bottom:16px}@media(max-width:360px){.item-controls{grid-template-columns:1fr}.history-open{align-items:flex-start}.history-open strong{font-size:15px}}@media(prefers-reduced-motion:reduce){.view.active{animation:none}}
 .simple-header{height:82px;padding:0 24px;display:flex;justify-content:space-between;align-items:center}.simple-header h1{font-size:21px;font-weight:600;letter-spacing:-.5px}.settings-button{font-size:13px;color:#707078;background:#e9e9ed;padding:8px 14px;border-radius:999px}.simple-home{padding:42px 28px 36px;text-align:center}.home-kicker{font-size:14px;color:#7a7a7a;margin-bottom:28px}.home-balance{background:#fff;border:1px solid #e8e8ec;border-radius:22px;padding:32px 16px 29px}.home-label{font-size:13px;color:#7a7a7a;margin-bottom:12px}.home-balance h2{font-size:48px;font-weight:600;line-height:1.15;letter-spacing:-1.6px;font-variant-numeric:tabular-nums}.home-yen{font-size:15px;color:#7a7a7a;margin-top:13px}.home-rate{font-size:10px;color:#85858d;margin:14px 0 32px;line-height:1.5}.home-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border-radius:999px;background:#0066cc;color:white;padding:16px;font-weight:600;font-size:16px}.home-secondary{width:100%;border:1px solid #ceced3;border-radius:999px;padding:15px;margin-top:12px;font-size:15px;color:#1d1d1f}.home-history{font-size:13px;color:#0066cc;padding:13px;margin-top:20px}.settings-list{border-radius:16px;background:white;border:1px solid #e0e0e0;overflow:hidden}.settings-list button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:22px;text-align:left}.settings-list button+button{border-top:1px solid #e0e0e0}.settings-note{font-size:12px;line-height:1.6;color:#7a7a7a;margin:24px 4px}.history-breakdown{border:1px solid #e0e0e0;border-radius:12px;padding:15px;background:white;margin-bottom:20px}.history-breakdown summary,.bulk-category summary{font-size:13px;color:#0066cc;cursor:pointer}.payment-breakdown{margin-top:18px;font-size:13px}.payment-breakdown>div{display:flex;justify-content:space-between;margin-top:10px}.bulk-category{padding:15px 0;border-bottom:1px solid #e0e0e0}.bulk-category>div{border:0;padding-bottom:0}#status{bottom:20px}main.max-w-\[414px\]{padding-bottom:20px!important}.home-secondary:hover,.settings-button:hover{background:#e9e9ed}.home-primary:hover{background:#0057b1}@media(max-width:360px){.simple-home{padding:26px 20px}.home-balance h2{font-size:42px}}</style>
-</head>
+<style>#dashboard-view{padding-bottom:95px}</style></head>
 <body class="font-sans text-body select-none">
 
     <!-- App Container -->
@@ -70,15 +36,52 @@
         
         <!-- DASHBOARD VIEW -->
         <div id="dashboard-view" class="view active">
-          <header class="simple-header"><h1>レシピート</h1><button onclick="navTo('settings-view')" class="settings-button" aria-label="設定">設定</button></header>
-          <section class="simple-home">
-            <p class="home-kicker">旅のお金を、ひとつに。</p>
-            <div class="home-balance"><p class="home-label">これまでの支出</p><h2 id="dash-total">₩0</h2><p id="dash-yen" class="home-yen"></p></div>
-            <p id="rate-summary" class="home-rate"></p>
-            <button onclick="navTo('scan-view')" class="home-primary"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 5l1-2h6l1 2h4v15H3V5z"/><circle cx="12" cy="12" r="4"/></svg>レシートを登録</button>
-            <button onclick="beginEntry()" class="home-secondary">手入力する</button>
-            <button onclick="navTo('history-view')" id="history-count" class="home-history">保存した記録を見る</button>
-          </section>
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center justify-between px-6">
+                <button class="text-action text-caption" onclick="navTo('settings-view')">設定</button><h1 class="text-tagline">レシピート</h1>
+                <button onclick="navTo('history-view')" class="text-action text-caption font-medium active:opacity-50">
+                    <span id="history-count">履歴一覧</span>
+                </button>
+            </div>
+
+            <div class="px-6 py-8 text-center">
+                <p class="text-strong text-muted mb-2">総支出 (Total Expenses)</p>
+                <h2 class="text-hero tracking-tighter" id="dash-total">₩0</h2><p id="dash-yen"></p><small id="rate-summary"></small>
+            </div>
+
+            <div class="px-6 space-y-4 mb-6">
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">現金</span>
+                        <span class="text-body text-muted">Cash</span>
+                    </div>
+                    <div class="text-display" id="dash-cash">₩0</div>
+                </div>
+
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">WOWPASS</span>
+                        <span class="text-body text-muted">Prepaid</span>
+                    </div>
+                    <div class="text-display" id="dash-wowpass">₩0</div>
+                </div>
+
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">クレジットカード</span>
+                        <span class="text-body text-muted">Credit Card</span>
+                    </div>
+                    <div class="text-display" id="dash-card">₩0</div>
+                </div>
+            </div>
+
+            <!-- Categories Summary Section -->
+            <div class="px-6">
+                <h3 class="text-strong mb-3">カテゴリー別支出 (Categories)</h3>
+                <div id="category-summary" class="grid grid-cols-2 gap-3"></div></div><div class="fixed bottom-0 left-0 right-0 frosted border-t border-hairline py-4 px-6 flex gap-3 z-40 max-w-[414px] mx-auto">
+                <button onclick="navTo('scan-view')" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 shadow-sm w-full font-medium">
+                    レシート撮影
+                </button>
+            </div>
         </div>
 
         <!-- SCAN VIEW -->
@@ -210,7 +213,7 @@
             </div>
         </div>
 
-<section id="history-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('dashboard-view')" class="text-action">‹ 戻る</button><h1 class="text-tagline mx-auto">保存した記録</h1></div><div class="px-6 py-6"><label for="history-search" class="text-caption">店舗・品目を検索</label><input id="history-search" type="search" class="field mt-2 mb-5" placeholder="店舗名・品目名"><details class="history-breakdown"><summary>支出の内訳を見る</summary><div class="payment-breakdown"><div><span>現金</span><strong id="dash-cash">₩0</strong></div><div><span>WOWPASS</span><strong id="dash-wowpass">₩0</strong></div><div><span>カード</span><strong id="dash-card">₩0</strong></div></div><div id="category-summary" class="grid grid-cols-2 gap-3 mt-4"></div></details><div id="history-list"></div></div></section>
+<section id="history-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('dashboard-view')" class="text-action">‹ 戻る</button><h1 class="text-tagline mx-auto">保存した記録</h1></div><div class="px-6 py-6"><label for="history-search" class="text-caption">店舗・品目を検索</label><input id="history-search" type="search" class="field mt-2 mb-5" placeholder="店舗名・品目名"><div id="history-list"></div></div></section>
 <section id="detail-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('history-view')" class="text-action">‹ 一覧</button><h1 class="text-tagline mx-auto">記録の詳細</h1></div><div class="px-6 py-6"><div id="detail-content" class="bg-canvas border border-hairline rounded-apple p-6"></div><button id="detail-edit" class="small-button w-full mt-6">この記録を再編集</button></div></section>
 <section id="settings-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('dashboard-view')" class="text-action">‹ ホーム</button><h1 class="text-tagline mx-auto">設定</h1></div><div class="px-6 py-8"><div class="settings-list"><button onclick="navTo('rate-view')"><span>為替レート</span><span aria-hidden="true">›</span></button><button onclick="navTo('categories-view')"><span>カテゴリー</span><span aria-hidden="true">›</span></button></div><p class="settings-note">記録はこの端末のブラウザに保存されます。</p></div></section><section id="categories-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('settings-view')" class="text-action">‹ 設定</button><h1 class="text-tagline mx-auto">カテゴリー管理</h1></div><div class="px-6 py-6"><p class="text-caption text-muted mb-5">名前の変更は保存済みの記録にも反映されます。</p><div id="category-list"></div><form id="add-category-form" class="mt-6"><label for="new-category" class="text-caption">新しいカテゴリー</label><input id="new-category" class="field mt-2" maxlength="40" required placeholder="例：おみやげ"><button class="small-button mt-3 w-full" type="submit">カテゴリーを追加</button></form></div></section>
 <section id="rate-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('settings-view')" class="text-action">‹ 設定</button><h1 class="text-tagline mx-auto">為替 · 원/엔</h1></div><div class="px-6 py-6"><p id="rate-info" class="text-body mb-3" aria-live="polite"></p><p id="fx-mode" class="text-caption text-muted mb-4"></p><button id="enable-auto-rate" class="small-button w-full mb-3" hidden>自動更新をONにする</button><button id="refresh-rate" class="small-button w-full">最新の参考レートを取得</button><p class="text-caption text-muted mt-4 mb-6">起動時・画面に戻った時・表示中は5分ごとに更新します。Frankfurterの参考レートで、秒単位の市場価格ではありません。実際の両替・カード請求額とは異なります。円換算には現在設定のレートを使います。</p><form id="manual-rate-form" class="bg-canvas border border-hairline rounded-apple p-6"><label for="manual-rate">100円あたりのウォン（₩）</label><input id="manual-rate" type="number" min="0.01" max="100000" step="0.01" required class="field mt-3" placeholder="例：950"><button type="submit" class="small-button mt-4 w-full">手動で保存（自動更新OFF）</button></form></div></section>
@@ -235,7 +238,7 @@ function validateDB(data){if(data?.version!==2||!Array.isArray(data.categories)|
 function persist(next){localStorage.setItem(KEY,JSON.stringify(next));db=next;}
 function saveRecord(r,id){validateReceipt(r);const next=clone(db);const index=next.receipts.findIndex(x=>x.id===id);if(id&&index<0)throw Error('元の記録が見つかりません。');const saved={...clone(r),id:id||uid(),updatedAt:new Date().toISOString()};if(index>=0)next.receipts[index]=saved;else next.receipts.push(saved);persist(next);return saved;}
 function categoryName(id){return db.categories.find(c=>c.id===id)?.name||'その他';}
-function inferCategory(name){const rules=[['cafe',/녹차|말차|에스프레소|스무디|주스|커피|카페|라테|라떼|아메리카노|coffee|cafe|コーヒー|ラテ|카푸치노/i],['health',/약국|의약|비타민|pharmacy|薬|サプリ/i],['beauty',/미용|헤어|네일|美容|サロン/i],['transport',/택시|지하철|버스|철도|교통|taxi|t-money|交通|地下鉄|電車/i],['stay',/호텔|숙박|hotel|宿泊|ホテル/i],['tour',/입장|티켓|박물관|관광|museum|ticket|入場|観光/i],['shopping',/양말|바지|신발|가방|인형|기념품|문구|볼펜|화장품|마스크팩|립|셔츠|쇼핑|올리브|cosmetic|shirt|化粧|リップ/i],['food',/과자|초콜릿|초코|스낵|도시락|샌드위치|생수|음료|요거트|계란|계란|바나나|사과|돼지|소고기|두부|맥주|소주|식당|음식|김밥|밥|라면|치킨|고기|빵|우유|식품|restaurant|bread|food|食事|パン|牛乳/i]];return rules.find(([id,re])=>db.categories.some(c=>c.id===id)&&re.test(name))?.[0]||'other';}
+function inferCategory(name){const rules=[['cafe',/녹차|말차|에스프레소|스무디|주스|커피|카페|라테|라떼|아메리카노|coffee|cafe|コーヒー|ラテ|카푸치노/i],['health',/이비인후과|병원|의원|진료|약국|의약|비타민|pharmacy|薬|サプリ/i],['beauty',/미용|헤어|네일|美容|サロン/i],['transport',/택시|지하철|버스|철도|교통|taxi|t-money|交通|地下鉄|電車/i],['stay',/호텔|숙박|hotel|宿泊|ホテル/i],['tour',/입장|티켓|박물관|관광|museum|ticket|入場|観光/i],['shopping',/양말|바지|신발|가방|인형|기념품|문구|볼펜|화장품|마스크팩|립|셔츠|쇼핑|올리브|cosmetic|shirt|化粧|リップ/i],['food',/과자|초콜릿|초코|스낵|도시락|샌드위치|생수|음료|요거트|계란|계란|바나나|사과|돼지|소고기|두부|맥주|소주|식당|음식|김밥|밥|라면|치킨|고기|빵|우유|식품|restaurant|bread|food|食事|パン|牛乳/i]];return rules.find(([id,re])=>db.categories.some(c=>c.id===id)&&re.test(name))?.[0]||'other';}
 function parseReceipt(text){const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const dateMatch=text.match(/(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})/);const items=[];
 let printedTotal=null, pendingName='';
 for (const rawLine of lines) {
@@ -253,8 +256,9 @@ if(/총\s*액|합\s*계|결제\s*금액|total|合計/i.test(line)){const m=line.
 }
 pendingName='';
 const name=m[1].replace(/^\d+[.)]\s*/,'').trim(),price=Number(m[2].replace(/,/g,''));if(!/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(name)||!validPrice(price)||price===0||/\d{2}[:\-/]\d/.test(line))continue;items.push({name,price,category:inferCategory(name)});}
-const store=lines.find(x=>/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(x)&&!(/영수증|receipt|매출|사업자|TEL|전화|주소/i.test(x))&&!(/\d{3,}/.test(x)))||'';
-return {store,date:dateMatch?`${dateMatch[1]}-${dateMatch[2].padStart(2,'0')}-${dateMatch[3].padStart(2,'0')}`:today(),method:'cash',items:items.length?items:[{name:'',price:printedTotal||0,category:'other'}],source:'ocr',printedTotal,ocrText:text};}
+const clinic=lines.find(line=>/[가-힣]*(?:이비인후과|병원|의원)/.test(line));
+const store=clinic||lines.find(x=>/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(x)&&!(/영수증|receipt|매출|사업자|TEL|전화|주소/i.test(x))&&!(/\d{3,}/.test(x)))||'';
+return {store,date:dateMatch?`${dateMatch[1]}-${dateMatch[2].padStart(2,'0')}-${dateMatch[3].padStart(2,'0')}`:today(),method:'cash',items:items.length?items:[{name:store||'',price:printedTotal||0,category:inferCategory(store)}],source:'ocr',printedTotal,ocrText:text};}
 function money(n){return '₩'+Number(n).toLocaleString('en-US');}
 function yen(n){return db.rate&&db.rate.wonPer100Yen>0?'約 ¥'+Math.round(n*100/db.rate.wonPer100Yen).toLocaleString('ja-JP'):'円換算は為替設定後に表示';}
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
