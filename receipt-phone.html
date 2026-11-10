@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Receipt + Fit!</title>
+    <style>*{box-sizing:border-box;border:0 solid #e0e0e0}body,p,h1,h2,h3{margin:0}body,button,input,select{font-family:system-ui,sans-serif}button,input,select{font:inherit;color:inherit}button{background:transparent;cursor:pointer}button,label{touch-action:manipulation}button{min-height:44px}.field,input,select{font-size:16px}main{max-width:414px;margin:auto;min-height:100dvh}.hidden,[hidden]{display:none!important}.flex{display:flex}.block{display:block}.grid{display:grid}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.mx-auto{margin-inline:auto}.fixed{position:fixed}.sticky{position:sticky}.relative{position:relative}.absolute{position:absolute}.inset-0{inset:0}.object-cover{object-fit:cover}.overflow-hidden{overflow:hidden}.pointer-events-none{pointer-events:none}.rounded-apple{border-radius:18px}.rounded-pill,.rounded-full{border-radius:999px}.rounded-lg{border-radius:8px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.text-center{text-align:center}.text-right{text-align:right}.text-hero{font-size:40px}.text-display{font-size:34px}.text-tagline{font-size:21px}.text-caption{font-size:14px}.text-strong,.text-hero,.text-display,.text-tagline{font-weight:600}.text-body{font-size:17px}.font-medium{font-weight:500}.space-y-4>*+*{margin-top:16px}.space-y-2>*+*{margin-top:8px}.w-full{width:100%}.h-full{height:100%}.fixed.bottom-0{max-width:414px;margin:auto;padding-bottom:max(16px,env(safe-area-inset-bottom))}.view.active{animation:none!important}.min-h-screen{min-height:100vh}.max-w-\[414px\]{max-width:414px}.text-red-700{color:#b91c1c}.bg-transparent{background:transparent}.bg-action{background-color:#0066cc}.text-action{color:#0066cc}.border-action{border-color:#0066cc}.bg-canvas{background-color:white}.text-canvas{color:white}.border-canvas{border-color:white}.bg-parchment{background-color:#f5f5f7}.text-parchment{color:#f5f5f7}.border-parchment{border-color:#f5f5f7}.bg-ink{background-color:#1d1d1f}.text-ink{color:#1d1d1f}.border-ink{border-color:#1d1d1f}.bg-muted{background-color:#7a7a7a}.text-muted{color:#7a7a7a}.border-muted{border-color:#7a7a7a}.bg-white{background-color:white}.text-white{color:white}.border-white{border-color:white}.bg-black{background-color:black}.text-black{color:black}.border-black{border-color:black}.bg-hairline{background-color:#e0e0e0}.text-hairline{color:#e0e0e0}.border-hairline{border-color:#e0e0e0}.p-0{padding:0px}.p-1{padding:4px}.p-2{padding:8px}.p-3{padding:12px}.p-4{padding:16px}.p-5{padding:20px}.p-6{padding:24px}.p-8{padding:32px}.p-\[11px\]{padding:11px}.p-\[22px\]{padding:22px}.p-\[24px\]{padding:24px}.p-\[52px\]{padding:52px}.p-\[100px\]{padding:100px}.p-\[300px\]{padding:300px}.p-\[400px\]{padding:400px}.h-0{height:0px}.h-1{height:4px}.h-2{height:8px}.h-3{height:12px}.h-4{height:16px}.h-5{height:20px}.h-6{height:24px}.h-8{height:32px}.h-\[11px\]{height:11px}.h-\[22px\]{height:22px}.h-\[24px\]{height:24px}.h-\[52px\]{height:52px}.h-\[100px\]{height:100px}.h-\[300px\]{height:300px}.h-\[400px\]{height:400px}.w-0{width:0px}.w-1{width:4px}.w-2{width:8px}.w-3{width:12px}.w-4{width:16px}.w-5{width:20px}.w-6{width:24px}.w-8{width:32px}.w-\[11px\]{width:11px}.w-\[22px\]{width:22px}.w-\[24px\]{width:24px}.w-\[52px\]{width:52px}.w-\[100px\]{width:100px}.w-\[300px\]{width:300px}.w-\[400px\]{width:400px}.min-h-0{min-height:0px}.min-h-1{min-height:4px}.min-h-2{min-height:8px}.min-h-3{min-height:12px}.min-h-4{min-height:16px}.min-h-5{min-height:20px}.min-h-6{min-height:24px}.min-h-8{min-height:32px}.min-h-\[11px\]{min-height:11px}.min-h-\[22px\]{min-height:22px}.min-h-\[24px\]{min-height:24px}.min-h-\[52px\]{min-height:52px}.min-h-\[100px\]{min-height:100px}.min-h-\[300px\]{min-height:300px}.min-h-\[400px\]{min-height:400px}.mt-0{margin-top:0px}.mt-1{margin-top:4px}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mt-5{margin-top:20px}.mt-6{margin-top:24px}.mt-8{margin-top:32px}.mt-\[11px\]{margin-top:11px}.mt-\[22px\]{margin-top:22px}.mt-\[24px\]{margin-top:24px}.mt-\[52px\]{margin-top:52px}.mt-\[100px\]{margin-top:100px}.mt-\[300px\]{margin-top:300px}.mt-\[400px\]{margin-top:400px}.mb-0{margin-bottom:0px}.mb-1{margin-bottom:4px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}.mb-5{margin-bottom:20px}.mb-6{margin-bottom:24px}.mb-8{margin-bottom:32px}.mb-\[11px\]{margin-bottom:11px}.mb-\[22px\]{margin-bottom:22px}.mb-\[24px\]{margin-bottom:24px}.mb-\[52px\]{margin-bottom:52px}.mb-\[100px\]{margin-bottom:100px}.mb-\[300px\]{margin-bottom:300px}.mb-\[400px\]{margin-bottom:400px}.mr-0{margin-right:0px}.mr-1{margin-right:4px}.mr-2{margin-right:8px}.mr-3{margin-right:12px}.mr-4{margin-right:16px}.mr-5{margin-right:20px}.mr-6{margin-right:24px}.mr-8{margin-right:32px}.mr-\[11px\]{margin-right:11px}.mr-\[22px\]{margin-right:22px}.mr-\[24px\]{margin-right:24px}.mr-\[52px\]{margin-right:52px}.mr-\[100px\]{margin-right:100px}.mr-\[300px\]{margin-right:300px}.mr-\[400px\]{margin-right:400px}.px-0{padding-inline:0px}.px-1{padding-inline:4px}.px-2{padding-inline:8px}.px-3{padding-inline:12px}.px-4{padding-inline:16px}.px-5{padding-inline:20px}.px-6{padding-inline:24px}.px-8{padding-inline:32px}.px-\[11px\]{padding-inline:11px}.px-\[22px\]{padding-inline:22px}.px-\[24px\]{padding-inline:24px}.px-\[52px\]{padding-inline:52px}.px-\[100px\]{padding-inline:100px}.px-\[300px\]{padding-inline:300px}.px-\[400px\]{padding-inline:400px}.py-0{padding-block:0px}.py-1{padding-block:4px}.py-2{padding-block:8px}.py-3{padding-block:12px}.py-4{padding-block:16px}.py-5{padding-block:20px}.py-6{padding-block:24px}.py-8{padding-block:32px}.py-\[11px\]{padding-block:11px}.py-\[22px\]{padding-block:22px}.py-\[24px\]{padding-block:24px}.py-\[52px\]{padding-block:52px}.py-\[100px\]{padding-block:100px}.py-\[300px\]{padding-block:300px}.py-\[400px\]{padding-block:400px}.pt-0{padding-top:0px}.pt-1{padding-top:4px}.pt-2{padding-top:8px}.pt-3{padding-top:12px}.pt-4{padding-top:16px}.pt-5{padding-top:20px}.pt-6{padding-top:24px}.pt-8{padding-top:32px}.pt-\[11px\]{padding-top:11px}.pt-\[22px\]{padding-top:22px}.pt-\[24px\]{padding-top:24px}.pt-\[52px\]{padding-top:52px}.pt-\[100px\]{padding-top:100px}.pt-\[300px\]{padding-top:300px}.pt-\[400px\]{padding-top:400px}.pr-0{padding-right:0px}.pr-1{padding-right:4px}.pr-2{padding-right:8px}.pr-3{padding-right:12px}.pr-4{padding-right:16px}.pr-5{padding-right:20px}.pr-6{padding-right:24px}.pr-8{padding-right:32px}.pr-\[11px\]{padding-right:11px}.pr-\[22px\]{padding-right:22px}.pr-\[24px\]{padding-right:24px}.pr-\[52px\]{padding-right:52px}.pr-\[100px\]{padding-right:100px}.pr-\[300px\]{padding-right:300px}.pr-\[400px\]{padding-right:400px}.pb-0{padding-bottom:0px}.pb-1{padding-bottom:4px}.pb-2{padding-bottom:8px}.pb-3{padding-bottom:12px}.pb-4{padding-bottom:16px}.pb-5{padding-bottom:20px}.pb-6{padding-bottom:24px}.pb-8{padding-bottom:32px}.pb-\[11px\]{padding-bottom:11px}.pb-\[22px\]{padding-bottom:22px}.pb-\[24px\]{padding-bottom:24px}.pb-\[52px\]{padding-bottom:52px}.pb-\[100px\]{padding-bottom:100px}.pb-\[300px\]{padding-bottom:300px}.pb-\[400px\]{padding-bottom:400px}.top-0{top:0px}.top-1{top:4px}.top-2{top:8px}.top-3{top:12px}.top-4{top:16px}.top-5{top:20px}.top-6{top:24px}.top-8{top:32px}.top-\[11px\]{top:11px}.top-\[22px\]{top:22px}.top-\[24px\]{top:24px}.top-\[52px\]{top:52px}.top-\[100px\]{top:100px}.top-\[300px\]{top:300px}.top-\[400px\]{top:400px}.left-0{left:0px}.left-1{left:4px}.left-2{left:8px}.left-3{left:12px}.left-4{left:16px}.left-5{left:20px}.left-6{left:24px}.left-8{left:32px}.left-\[11px\]{left:11px}.left-\[22px\]{left:22px}.left-\[24px\]{left:24px}.left-\[52px\]{left:52px}.left-\[100px\]{left:100px}.left-\[300px\]{left:300px}.left-\[400px\]{left:400px}.right-0{right:0px}.right-1{right:4px}.right-2{right:8px}.right-3{right:12px}.right-4{right:16px}.right-5{right:20px}.right-6{right:24px}.right-8{right:32px}.right-\[11px\]{right:11px}.right-\[22px\]{right:22px}.right-\[24px\]{right:24px}.right-\[52px\]{right:52px}.right-\[100px\]{right:100px}.right-\[300px\]{right:300px}.right-\[400px\]{right:400px}.bottom-0{bottom:0px}.bottom-1{bottom:4px}.bottom-2{bottom:8px}.bottom-3{bottom:12px}.bottom-4{bottom:16px}.bottom-5{bottom:20px}.bottom-6{bottom:24px}.bottom-8{bottom:32px}.bottom-\[11px\]{bottom:11px}.bottom-\[22px\]{bottom:22px}.bottom-\[24px\]{bottom:24px}.bottom-\[52px\]{bottom:52px}.bottom-\[100px\]{bottom:100px}.bottom-\[300px\]{bottom:300px}.bottom-\[400px\]{bottom:400px}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-40{z-index:40}.opacity-0{opacity:0.0}.opacity-25{opacity:0.25}.opacity-75{opacity:0.75}.opacity-80{opacity:0.8}.w-1\/2{width:50.0%}.w-1\/3{width:33.333333333333336%}.w-2\/3{width:66.66666666666667%}</style>    <style>
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .view { display: none; }
+        .view.active { display: block; animation: fade 0.25s ease-out forwards; }
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .frosted {
+            background-color: rgba(245, 245, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        input:focus, select:focus { outline: none; }
+        ::-webkit-scrollbar { display: none; }
+        * { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+.inline-block{display:inline-block}.mt-0\.5{margin-top:2px}.py-0\.5{padding-block:2px}.py-16{padding-block:64px}.rounded-md{border-radius:6px}.space-y-3>*+*{margin-top:12px}.text-lg{font-size:18px}.text-red{color:#c42b25}.border-red{border-color:#c42b25}
+main{width:100%;padding-bottom:calc(120px + env(safe-area-inset-bottom))}.fixed.bottom-0{width:100%}.sticky.top-0{height:auto;min-height:52px;padding-top:env(safe-area-inset-top)}input,select{min-width:0;font-size:16px}video{max-width:100%}.text-display{overflow-wrap:anywhere}.view.active{animation:none}.text-body{line-height:1.47}.bg-black\/20{background:rgba(0,0,0,.2)}.border-white{border-color:white}.border-t-2{border-top-width:2px}.border-b-2{border-bottom-width:2px}.border-l-2{border-left-width:2px}.border-r-2{border-right-width:2px}
+@media(max-width:380px){.px-6{padding-inline:16px}.text-display{font-size:29px}.text-caption{font-size:13px}}
+</style></head>
+<body class="font-sans text-body select-none">
+
+    <!-- App Container -->
+    <main class="max-w-[414px] mx-auto min-h-screen bg-parchment relative pb-[120px]">
+        
+        <!-- DASHBOARD VIEW -->
+        <div id="dashboard-view" class="view active">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center justify-between px-6">
+                <h1 class="text-tagline">レシピート</h1>
+                <button onclick="navTo('history-view')" class="text-action text-caption font-medium">
+                    履歴一覧 (History)
+                </button>
+            </div>
+
+            <div class="px-6 py-8 text-center">
+                <p class="text-strong text-muted mb-2">総支出 (Total Expenses)</p>
+                <h2 class="text-hero tracking-tighter" id="dash-total">₩0</h2>
+            </div>
+
+            <div class="px-6 space-y-4 mb-6">
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">現金</span>
+                        <span class="text-body text-muted">Cash</span>
+                    </div>
+                    <div class="text-display" id="dash-cash">₩0</div>
+                </div>
+
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">WOWPASS</span>
+                        <span class="text-body text-muted">Prepaid</span>
+                    </div>
+                    <div class="text-display" id="dash-wowpass">₩0</div>
+                </div>
+
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px]">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-strong">クレジットカード</span>
+                        <span class="text-body text-muted">Credit Card</span>
+                    </div>
+                    <div class="text-display" id="dash-card">₩0</div>
+                </div>
+            </div>
+
+            <!-- Categories Summary Section -->
+            <div class="px-6">
+                <h3 class="text-strong mb-3">カテゴリー別支出 (Categories)</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-canvas border border-hairline rounded-apple p-4">
+                        <p class="text-caption text-muted">음식 (食事)</p>
+                        <p class="text-strong text-lg mt-1" id="cat-food">₩0</p>
+                    </div>
+                    <div class="bg-canvas border border-hairline rounded-apple p-4">
+                        <p class="text-caption text-muted">쇼핑 (ショッピング)</p>
+                        <p class="text-strong text-lg mt-1" id="cat-shopping">₩0</p>
+                    </div>
+                    <div class="bg-canvas border border-hairline rounded-apple p-4">
+                        <p class="text-caption text-muted">교통비 (交通)</p>
+                        <p class="text-strong text-lg mt-1" id="cat-transport">₩0</p>
+                    </div>
+                    <div class="bg-canvas border border-hairline rounded-apple p-4">
+                        <p class="text-caption text-muted">숙박 (宿泊)</p>
+                        <p class="text-strong text-lg mt-1" id="cat-accommodation">₩0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed bottom-0 left-0 right-0 frosted border-t border-hairline py-4 px-6 flex justify-center z-40 max-w-[414px] mx-auto">
+                <button onclick="navTo('scan-view')" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 shadow-sm w-full font-medium">
+                    レシート撮影 (Scan Receipt)
+                </button>
+            </div>
+        </div>
+
+        <!-- SCAN VIEW -->
+        <div id="scan-view" class="view">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
+                <button onclick="navTo('dashboard-view')" class="text-action text-body active:opacity-50 transition-opacity">
+                    <span class="mr-1">‹</span>戻る
+                </button>
+                <h1 class="text-tagline mx-auto pr-8">レシート撮影</h1>
+            </div>
+
+            <div class="px-6 py-8">
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px] flex flex-col items-center justify-center min-h-[400px]">
+                    <div class="w-full h-[300px] bg-black border border-hairline rounded-lg flex items-center justify-center relative mb-6 overflow-hidden">
+                        <video id="camera-feed" class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted playsinline></video>
+                        <canvas id="camera-canvas" class="hidden"></canvas>
+                        
+                        <div id="camera-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none z-20 transition-opacity duration-75"></div>
+
+                        <div id="scan-loading-overlay" class="absolute inset-0 bg-white hidden flex-col items-center justify-center z-30 transition-opacity duration-300 opacity-0">
+                            <svg class="animate-spin h-8 w-8 text-black mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <p class="text-caption text-ink font-medium">レシートを分析中...</p>
+                        </div>
+
+                        <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-white opacity-80 z-10"></div>
+                        <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-white opacity-80 z-10"></div>
+                        <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-white opacity-80 z-10"></div>
+                        <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-white opacity-80 z-10"></div>
+                        
+                        <div id="camera-overlay-text" class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 bg-black/20">
+                            <p class="text-caption text-white text-center px-8 font-medium">
+                                レシート全体を写してください<br>(Scan the entire receipt)
+                            </p>
+                        </div>
+                    </div>
+
+                    <button onclick="simulateScan()" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium">
+                        Capture
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYMENT VIEW -->
+        <div id="payment-view" class="view">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
+                <button onclick="navTo('scan-view')" class="text-action text-body active:opacity-50 transition-opacity">
+                    <span class="mr-1">‹</span>戻る
+                </button>
+                <h1 class="text-tagline mx-auto pr-8">支払い方法</h1>
+            </div>
+
+            <div class="px-6 py-8">
+                <div class="mb-8 text-center">
+                    <p class="text-body text-muted mb-1" id="payment-store-name">ソウルカフェ</p>
+                    <h2 class="text-display" id="payment-total-amount">₩8,000</h2>
+                </div>
+
+                <div class="bg-canvas border border-hairline rounded-apple p-0 overflow-hidden mb-8">
+                    <label class="flex items-center justify-between p-[24px] border-b border-hairline active:bg-parchment transition-colors cursor-pointer">
+                        <span class="text-strong">現金 (Cash)</span>
+                        <div class="w-6 h-6 rounded-full border-2 border-action flex items-center justify-center relative">
+                            <div class="w-3 h-3 bg-action rounded-full" id="radio-cash"></div>
+                        </div>
+                        <input type="radio" name="payment" value="cash" class="hidden" checked onchange="updateRadioUI('cash')">
+                    </label>
+
+                    <label class="flex items-center justify-between p-[24px] border-b border-hairline active:bg-parchment transition-colors cursor-pointer">
+                        <span class="text-strong">WOWPASS</span>
+                        <div class="w-6 h-6 rounded-full border-2 border-hairline flex items-center justify-center relative">
+                            <div class="w-3 h-3 bg-transparent rounded-full" id="radio-wowpass"></div>
+                        </div>
+                        <input type="radio" name="payment" value="wowpass" class="hidden" onchange="updateRadioUI('wowpass')">
+                    </label>
+
+                    <label class="flex items-center justify-between p-[24px] active:bg-parchment transition-colors cursor-pointer">
+                        <span class="text-strong">クレジットカード</span>
+                        <div class="w-6 h-6 rounded-full border-2 border-hairline flex items-center justify-center relative">
+                            <div class="w-3 h-3 bg-transparent rounded-full" id="radio-card"></div>
+                        </div>
+                        <input type="radio" name="payment" value="card" class="hidden" onchange="updateRadioUI('card')">
+                    </label>
+                </div>
+
+                <button onclick="navTo('confirm-view')" class="w-full bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium block text-center">
+                    保存 (Save)
+                </button>
+            </div>
+        </div>
+
+        <!-- CONFIRM VIEW -->
+        <div id="confirm-view" class="view">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
+                <button onclick="navTo('payment-view')" class="text-action text-body active:opacity-50 transition-opacity">
+                    <span class="mr-1">‹</span>戻る
+                </button>
+                <h1 class="text-tagline mx-auto pr-8">内容を確認</h1>
+            </div>
+
+            <div class="px-6 py-8">
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px] mb-8">
+                    <div class="flex items-center border-b border-hairline py-4 first:pt-0">
+                        <div class="w-1/3 text-muted text-body">日付</div>
+                        <input type="text" id="confirm-date" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors" value="2026.11.03">
+                    </div>
+
+                    <div class="flex items-center border-b border-hairline py-4">
+                        <div class="w-1/3 text-muted text-body">店舗</div>
+                        <input type="text" id="confirm-store" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors" value="ソウルカフェ">
+                    </div>
+
+                    <div class="flex items-center border-b border-hairline py-4">
+                        <div class="w-1/3 text-muted text-body">カテゴリー</div>
+                        <select id="confirm-category" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors">
+                            <option value="음식">음식 (食事)</option>
+                            <option value="쇼핑">쇼핑 (ショッピング)</option>
+                            <option value="교통비">교통비 (交通)</option>
+                            <option value="숙박">숙박 (宿泊)</option>
+                        </select>
+                    </div>
+
+                    <div class="py-4 border-b border-hairline">
+                        <div class="text-muted text-body mb-3">明細</div>
+                        <div id="confirm-items-container" class="space-y-2"></div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-6 pb-2">
+                        <div class="text-strong">合計 (₩)</div>
+                        <input type="number" id="confirm-total" class="text-display bg-transparent border-none outline-none text-right focus:text-action transition-colors w-1/2" value="8000">
+                    </div>
+                </div>
+
+                <button onclick="finalizeTransaction()" class="w-full bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium block text-center">
+                    次へ (Next)
+                </button>
+            </div>
+        </div>
+
+        <!-- HISTORY VIEW -->
+        <div id="history-view" class="view">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
+                <button onclick="navTo('dashboard-view')" class="text-action text-body active:opacity-50 transition-opacity">
+                    <span class="mr-1">‹</span>戻る
+                </button>
+                <h1 class="text-tagline mx-auto pr-8">支出履歴一覧</h1>
+            </div>
+
+            <div class="px-6 py-8">
+                <div id="history-list-container" class="space-y-4">
+                    <!-- Dynamic History Cards -->
+                </div>
+                <div id="history-empty" class="text-center py-16 text-muted text-body hidden">
+                    記録された支出がありません。
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT VIEW -->
+        <div id="edit-view" class="view">
+            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
+                <button onclick="navTo('history-view')" class="text-action text-body active:opacity-50 transition-opacity">
+                    <span class="mr-1">‹</span>戻る
+                </button>
+                <h1 class="text-tagline mx-auto pr-8">履歴を編集</h1>
+            </div>
+
+            <div class="px-6 py-8">
+                <div class="bg-canvas border border-hairline rounded-apple p-[24px] mb-8">
+                    <input type="hidden" id="edit-index">
+                    <div class="flex items-center border-b border-hairline py-4 first:pt-0">
+                        <div class="w-1/3 text-muted text-body">日付</div>
+                        <input type="text" id="edit-date" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors">
+                    </div>
+
+                    <div class="flex items-center border-b border-hairline py-4">
+                        <div class="w-1/3 text-muted text-body">店舗</div>
+                        <input type="text" id="edit-store" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors">
+                    </div>
+
+                    <div class="flex items-center border-b border-hairline py-4">
+                        <div class="w-1/3 text-muted text-body">支払い方法</div>
+                        <select id="edit-method" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors">
+                            <option value="cash">現金 (Cash)</option>
+                            <option value="wowpass">WOWPASS</option>
+                            <option value="card">クレジットカード</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center border-b border-hairline py-4">
+                        <div class="w-1/3 text-muted text-body">カテゴリー</div>
+                        <select id="edit-category" class="w-2/3 text-body font-medium bg-transparent border-none outline-none text-right focus:text-action transition-colors">
+                            <option value="음식">음식 (食事)</option>
+                            <option value="쇼핑">쇼핑 (ショッピング)</option>
+                            <option value="교통비">교통비 (交通)</option>
+                            <option value="숙박">숙박 (宿泊)</option>
+                        </select>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-6 pb-2">
+                        <div class="text-strong">合計 (₩)</div>
+                        <input type="number" id="edit-total" class="text-display bg-transparent border-none outline-none text-right focus:text-action transition-colors w-1/2">
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <button onclick="saveEditedTransaction()" class="w-full bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium block text-center">
+                        変更を保存 (Save Changes)
+                    </button>
+                    <button onclick="deleteTransaction()" class="w-full bg-canvas border border-red text-red rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium block text-center">
+                        削除 (Delete)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const mockReceipts = [
+            {
+                store: "ソウルカフェ",
+                category: "음식",
+                method: "cash",
+                date: "2026.11.03",
+                items: [{name: "アメリカーノ", price: 4000}, {name: "カフェラテ", price: 4000}],
+                total: 8000
+            }
+        ];
+
+        const state = {
+            total: 0,
+            cash: 0,
+            wowpass: 0,
+            card: 0,
+            categories: {
+                음식: 0,
+                쇼핑: 0,
+                교통비: 0,
+                숙박: 0
+            },
+            transactions: [],
+            pendingPaymentMethod: 'cash',
+            currentReceipt: null,
+            cameraStream: null
+        };
+
+        async function startCamera() {
+            try {
+                const video = document.getElementById('camera-feed');
+                video.play().catch(e => {}); 
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'environment' } 
+                });
+                video.srcObject = stream;
+                state.cameraStream = stream;
+            } catch (err) {
+                console.error("Camera access denied or unavailable", err);
+                const overlay = document.getElementById('camera-overlay-text');
+                if (overlay) {
+                    overlay.innerHTML = '<p class="text-caption text-white text-center px-8">Camera unavailable<br>(Requires HTTPS & Camera Permissions)</p>';
+                }
+            }
+        }
+
+        function stopCamera() {
+            if (state.cameraStream) {
+                state.cameraStream.getTracks().forEach(track => track.stop());
+                state.cameraStream = null;
+                const video = document.getElementById('camera-feed');
+                if (video) video.srcObject = null;
+            }
+        }
+
+        function navTo(viewId) {
+            if (viewId === 'scan-view') {
+                startCamera();
+            } else {
+                stopCamera();
+            }
+
+            if (viewId === 'history-view') {
+                renderHistoryList();
+            }
+
+            document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function formatMoney(num) {
+            return '₩' + num.toLocaleString('en-US');
+        }
+
+        function populateDynamicData() {
+            const receipt = state.currentReceipt;
+            if (!receipt) return;
+
+            document.getElementById('payment-store-name').innerText = receipt.store;
+            document.getElementById('payment-total-amount').innerText = formatMoney(receipt.total);
+
+            document.getElementById('confirm-date').value = receipt.date || '';
+            document.getElementById('confirm-store').value = receipt.store || '';
+            document.getElementById('confirm-category').value = receipt.category || '음식';
+            document.getElementById('confirm-total').value = receipt.total || 0;
+
+            const itemsContainer = document.getElementById('confirm-items-container');
+            itemsContainer.innerHTML = '';
+            
+            if (receipt.items && Array.isArray(receipt.items)) {
+                receipt.items.forEach((item) => {
+                    const row = document.createElement('div');
+                    row.className = 'flex justify-between items-center text-body font-medium';
+                    row.innerHTML = `
+                        <input type="text" class="w-2/3 bg-transparent border-none outline-none focus:text-action" value="${item.name}">
+                        <input type="number" class="w-1/3 bg-transparent border-none outline-none text-right focus:text-action" value="${item.price}">
+                    `;
+                    itemsContainer.appendChild(row);
+                });
+            }
+        }
+
+        async function simulateScan() {
+            const flash = document.getElementById('camera-flash');
+            flash.classList.remove('opacity-0');
+            flash.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                flash.classList.remove('opacity-100');
+                flash.classList.add('opacity-0');
+            }, 100);
+
+            const video = document.getElementById('camera-feed');
+            const canvas = document.getElementById('camera-canvas');
+            let base64ImageData = null;
+            
+            if (video && video.videoWidth > 0) {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                base64ImageData = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+                video.pause();
+            }
+
+            const loadingOverlay = document.getElementById('scan-loading-overlay');
+            loadingOverlay.classList.remove('hidden');
+            setTimeout(() => loadingOverlay.classList.remove('opacity-0'), 10); 
+
+            try {
+                if (!base64ImageData) throw new Error("No camera data available");
+
+                const payload = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [
+                                { text: "Analyze this receipt and extract details. Categorize strictly into one of these four categories: '음식', '쇼핑', '교통비', '숙박'." },
+                                {
+                                    inlineData: {
+                                        mimeType: "image/jpeg",
+                                        data: base64ImageData
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                date: { type: "STRING" },
+                                storeName: { type: "STRING" },
+                                category: { type: "STRING", enum: ["음식", "쇼핑", "교통비", "숙박"] },
+                                items: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            name: { type: "STRING" },
+                                            price: { type: "NUMBER" }
+                                        }
+                                    }
+                                },
+                                totalAmount: { type: "NUMBER" }
+                            },
+                            required: ["date", "storeName", "category", "items", "totalAmount"]
+                        }
+                    }
+                };
+
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
+                    const parsedData = JSON.parse(result.candidates[0].content.parts[0].text);
+                    state.currentReceipt = {
+                        store: parsedData.storeName || "不明な店舗",
+                        category: parsedData.category || "음식",
+                        date: parsedData.date || "2026.11.03",
+                        items: parsedData.items || [],
+                        total: parsedData.totalAmount || 0
+                    };
+                } else {
+                    throw new Error("Invalid response format from Gemini");
+                }
+
+            } catch (err) {
+                console.error("Gemini API Error, falling back to mock data:", err);
+                const randomIdx = Math.floor(Math.random() * mockReceipts.length);
+                state.currentReceipt = mockReceipts[randomIdx];
+            }
+
+            loadingOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                populateDynamicData();
+                navTo('payment-view');
+            }, 300);
+        }
+
+        function updateRadioUI(selectedMethod) {
+            state.pendingPaymentMethod = selectedMethod;
+            
+            const methods = ['cash', 'wowpass', 'card'];
+            methods.forEach(method => {
+                const indicator = document.getElementById(`radio-${method}`);
+                const container = indicator.parentElement;
+                
+                if (method === selectedMethod) {
+                    indicator.classList.remove('bg-transparent');
+                    indicator.classList.add('bg-action');
+                    container.classList.remove('border-hairline');
+                    container.classList.add('border-action');
+                } else {
+                    indicator.classList.add('bg-transparent');
+                    indicator.classList.remove('bg-action');
+                    container.classList.add('border-hairline');
+                    container.classList.remove('border-action');
+                }
+            });
+        }
+
+        function finalizeTransaction() {
+            if (!state.currentReceipt) return;
+
+            const editedTotal = parseInt(document.getElementById('confirm-total').value, 10);
+            const finalTotal = isNaN(editedTotal) ? state.currentReceipt.total : editedTotal;
+            const selectedCategory = document.getElementById('confirm-category').value;
+            const storeName = document.getElementById('confirm-store').value;
+            const dateStr = document.getElementById('confirm-date').value;
+
+            const newTx = {
+                store: storeName,
+                category: selectedCategory,
+                method: state.pendingPaymentMethod,
+                date: dateStr,
+                total: finalTotal,
+                items: state.currentReceipt.items || []
+            };
+
+            state.transactions.push(newTx);
+            recalculateTotals();
+
+            navTo('dashboard-view');
+            updateRadioUI('cash');
+        }
+
+        function recalculateTotals() {
+            state.total = 0;
+            state.cash = 0;
+            state.wowpass = 0;
+            state.card = 0;
+            state.categories = { 음식: 0, 쇼핑: 0, 교통비: 0, 숙박: 0 };
+
+            state.transactions.forEach(tx => {
+                state.total += tx.total;
+                if (state[tx.method] !== undefined) {
+                    state[tx.method] += tx.total;
+                }
+                if (state.categories[tx.category] !== undefined) {
+                    state.categories[tx.category] += tx.total;
+                }
+            });
+
+            document.getElementById('dash-total').innerText = formatMoney(state.total);
+            document.getElementById('dash-cash').innerText = formatMoney(state.cash);
+            document.getElementById('dash-wowpass').innerText = formatMoney(state.wowpass);
+            document.getElementById('dash-card').innerText = formatMoney(state.card);
+
+            document.getElementById('cat-food').innerText = formatMoney(state.categories['음식']);
+            document.getElementById('cat-shopping').innerText = formatMoney(state.categories['쇼핑']);
+            document.getElementById('cat-transport').innerText = formatMoney(state.categories['교통비']);
+            document.getElementById('cat-accommodation').innerText = formatMoney(state.categories['숙박']);
+        }
+
+        function renderHistoryList() {
+            const container = document.getElementById('history-list-container');
+            const emptyEl = document.getElementById('history-empty');
+            container.innerHTML = '';
+
+            if (state.transactions.length === 0) {
+                emptyEl.classList.remove('hidden');
+                return;
+            }
+
+            emptyEl.classList.add('hidden');
+            state.transactions.forEach((tx, idx) => {
+                const methodNames = { cash: '現金', wowpass: 'WOWPASS', card: 'クレジット' };
+                const card = document.createElement('div');
+                card.className = 'bg-canvas border border-hairline rounded-apple p-4 flex justify-between items-center cursor-pointer active:bg-parchment transition-colors';
+                card.onclick = () => openEditView(idx);
+                card.innerHTML = `
+                    <div>
+                        <p class="text-caption text-muted">${tx.date} · ${methodNames[tx.method] || tx.method}</p>
+                        <p class="text-strong text-lg mt-0.5">${tx.store}</p>
+                        <span class="inline-block bg-parchment text-caption px-2 py-0.5 rounded-md mt-1 text-muted">${tx.category}</span>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-strong text-lg">${formatMoney(tx.total)}</p>
+                        <p class="text-caption text-action mt-1">編集 〉</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openEditView(index) {
+            const tx = state.transactions[index];
+            document.getElementById('edit-index').value = index;
+            document.getElementById('edit-date').value = tx.date;
+            document.getElementById('edit-store').value = tx.store;
+            document.getElementById('edit-method').value = tx.method;
+            document.getElementById('edit-category').value = tx.category;
+            document.getElementById('edit-total').value = tx.total;
+
+            navTo('edit-view');
+        }
+
+        function saveEditedTransaction() {
+            const index = parseInt(document.getElementById('edit-index').value, 10);
+            if (isNaN(index) || !state.transactions[index]) return;
+
+            state.transactions[index].date = document.getElementById('edit-date').value;
+            state.transactions[index].store = document.getElementById('edit-store').value;
+            state.transactions[index].method = document.getElementById('edit-method').value;
+            state.transactions[index].category = document.getElementById('edit-category').value;
+            state.transactions[index].total = parseInt(document.getElementById('edit-total').value, 10) || 0;
+
+            recalculateTotals();
+            navTo('history-view');
+        }
+
+        function deleteTransaction() {
+            const index = parseInt(document.getElementById('edit-index').value, 10);
+            if (isNaN(index) || !state.transactions[index]) return;
+
+            state.transactions.splice(index, 1);
+            recalculateTotals();
+            navTo('history-view');
+        }
+    </script>
+</body>
+</html>
