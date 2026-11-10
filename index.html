@@ -93,7 +93,7 @@
             <div class="px-6 py-8">
                 <div class="bg-canvas border border-hairline rounded-apple p-[24px] flex flex-col items-center justify-center min-h-[400px]">
                     <div class="w-full h-[300px] bg-black border border-hairline rounded-lg flex items-center justify-center relative mb-6 overflow-hidden">
-                        <video id="camera-feed" class="absolute inset-0 w-full h-full object-cover z-0" autoplay playsinline></video>
+                        <video id="camera-feed" class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted playsinline></video>
                         <canvas id="camera-canvas" class="hidden"></canvas>
                         
                         <div id="camera-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none z-20 transition-opacity duration-75"></div>
@@ -120,7 +120,7 @@
 
                     <div id="scan-controls" class="w-full text-center"><button onclick="captureReceipt()" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium">
                         撮影して読み取る
-                    </button><label for="photo-file" class="text-action text-body block mt-5">写真から選ぶ</label><input id="photo-file" type="file" accept="image/*" class="field mt-2"><button onclick="beginEntry()" class="text-action text-body mt-5">手入力する</button></div><p id="scan-progress" class="text-caption text-muted mt-5" role="status">写真はブラウザ内で読み取ります。</p>
+                    </button><input id="native-camera" type="file" accept="image/*" capture="environment" hidden><label for="photo-file" class="text-action text-body block mt-5">写真から選ぶ</label><input id="photo-file" type="file" accept="image/*" class="field mt-2"><button onclick="beginEntry()" class="text-action text-body mt-5">手入力する</button></div><p id="scan-progress" class="text-caption text-muted mt-5" role="status">写真はブラウザ内で読み取ります。</p>
                 </div>
             </div>
         </div>
@@ -244,8 +244,32 @@ function yen(n){return db.rate&&db.rate.wonPer100Yen>0?'約 ¥'+Math.round(n*100
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
 let statusTimer;function notify(text){$('status').textContent=text;clearTimeout(statusTimer);statusTimer=setTimeout(()=>$('status').textContent='',6500);}
 function handleError(e){notify(e.name==='QuotaExceededError'?'保存容量が足りません。 / 저장 공간이 부족해요.':e.message||'保存できませんでした。');}
-function stopCamera(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('camera-feed').srcObject=null;}
-async function startCamera(){stopCamera();$('camera-overlay-text').textContent='カメラを準備中…';try{const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'},audio:false});if(!$('scan-view').classList.contains('active')){s.getTracks().forEach(t=>t.stop());return;}stream=s;$('camera-feed').srcObject=s;await $('camera-feed').play();$('camera-overlay-text').textContent='レシート全体を写してください';}catch{$('camera-overlay-text').textContent='カメラが使えません。写真を選ぶか手入力してください。';}}
+function stopCamera(){cameraAttempt++;if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('camera-feed').srcObject=null;}
+let cameraAttempt = 0;
+async function startCamera() {
+  stopCamera();
+  const attempt = cameraAttempt;
+  const hint = $('camera-overlay-text');
+  hint.textContent = 'カメラを準備中…';
+  try {
+    const media = await navigator.mediaDevices.getUserMedia({
+      video: {facingMode: {ideal: 'environment'}, width: {ideal: 1920}, height: {ideal: 1080}},
+      audio: false
+    });
+    if (attempt !== cameraAttempt) {
+      media.getTracks().forEach(track => track.stop());
+      return;
+    }
+    stream = media;
+    $('camera-feed').srcObject = media;
+    await $('camera-feed').play();
+    hint.textContent = 'レシート全体を写してください';
+  } catch {
+    if (attempt !== cameraAttempt) return;
+    stopCamera();
+    hint.textContent = '下の撮影ボタンでカメラを開くか、写真を選んでください。';
+  }
+}
 function navTo(id){if(scanBusy)return;if(id!=='scan-view')stopCamera();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));if(id==='scan-view')startCamera();if(id==='dashboard-view')renderDashboard();if(id==='history-view')renderHistory();if(id==='categories-view')renderCategories();if(id==='rate-view')renderRate(true);if(id==='payment-view'&&draft){$('payment-store-name').textContent=draft.store||'新しい記録';$('payment-total-amount').textContent=money(receiptTotal(draft));updateRadioUI(draft.method);}window.scrollTo(0,0);}
 function renderDashboard(){const a=aggregate(db.receipts);$('dash-total').textContent=money(a.total);$('dash-yen').textContent=yen(a.total);for(const m of ['cash','wowpass','card'])$('dash-'+m).textContent=money(a[m]);$('rate-summary').textContent=rateSummary();const box=$('category-summary');box.replaceChildren();for(const c of db.categories){const card=el('div','bg-canvas border border-hairline rounded-apple p-4');card.append(el('p','text-caption text-muted',c.name),el('p','text-strong text-lg mt-1',money(a.categories[c.id]||0)));box.append(card);} $('history-count').textContent=`記録を見る（${db.receipts.length}件）`;}
 function beginEntry(r=null){editingId=r?.id||null;draft=r?clone(r):{store:'',date:today(),method:'cash',items:[{name:'',price:0,category:'other'}],source:'manual'};returnView=r?'history-view':'dashboard-view';photoData=null;$('confirm-heading').textContent=r?'記録を再編集':'内容を確認';$('confirm-save').textContent=r?'変更を保存':'記録を保存';populateEditor();navTo('confirm-view');}
@@ -273,18 +297,70 @@ async function refreshRate({force=false,announce=false}={}){if(fxLoading||(!forc
 function manualRate(e){e.preventDefault();const rate=Number($('manual-rate').value);try{if(!Number.isFinite(rate)||rate<=0||rate>100000)throw Error('正しいレートを入力してください。');const next=clone(db);next.fxMode='manual';next.rate={wonPer100Yen:rate,date:today(),source:'manual'};persist(next);cancelFX();fxError='';updateFXDisplays();notify('手動レートを保存しました。自動更新はOFFです。');}catch(e){handleError(e);}}
 function enableAutoFX(){try{const next=clone(db);next.fxMode='auto';persist(next);cancelFX();refreshRate({force:true,announce:true});}catch(e){handleError(e);}}
 let loader;
-function loadOCR(){if(window.Tesseract)return Promise.resolve();if(loader)return loader;loader=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';s.onload=resolve;s.onerror=()=>{loader=null;s.remove();reject(Error('読み取りライブラリを取得できません。手入力をご利用ください。'));};document.head.append(s);});return loader;}
-async function recognizeImage(image){if(scanBusy)return;scanBusy=true;stopCamera();$('scan-progress').textContent='読み取り準備中… 初回は時間がかかります。';$('scan-controls').querySelectorAll('button,input').forEach(e=>e.disabled=true);let worker;try{await loadOCR();worker=await Tesseract.createWorker('kor+eng',1,{logger:m=>{if(m.status)$('scan-progress').textContent='読み取り中 '+Math.round((m.progress||0)*100)+'%';}});const result=await worker.recognize(image);if(!result.data.text.trim())throw Error('文字を読み取れませんでした。撮り直すか手入力してください。');editingId=null;draft=parseReceipt(result.data.text);photoData=image;returnView='dashboard-view';scanBusy=false;populateEditor();navTo('payment-view');notify('読み取り結果を確認して、品目ごとに分類してください。');}catch(e){notify(e.message||'読み取りできませんでした。手入力も利用できます。');}finally{if(worker)await worker.terminate().catch(()=>{});scanBusy=false;$('scan-controls').querySelectorAll('button,input').forEach(e=>e.disabled=false);$('scan-progress').textContent='写真はこのブラウザ内で文字を読み取ります。';}}
-function captureReceipt(){const video=$('camera-feed');if(!video.videoWidth){notify('カメラが準備できていません。写真を選択してください。');return;}const canvas=$('camera-canvas');const scale=Math.min(1,1800/video.videoWidth);canvas.width=video.videoWidth*scale;canvas.height=video.videoHeight*scale;canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);recognizeImage(canvas.toDataURL('image/jpeg',.9));}
+function loadOCR(){if(window.Tesseract)return Promise.resolve();if(loader)return loader;loader=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';s.onload=resolve; s.dataset.ocrLoader='true';s.onerror=()=>{loader=null;s.remove();reject(Error('読み取りライブラリを取得できません。手入力をご利用ください。'));};document.head.append(s);});return loader;}
+async function recognizeImage(image) {
+  if (scanBusy) return;
+  scanBusy = true;
+  stopCamera();
+  const progress = $('scan-progress');
+  const controls = $('scan-controls').querySelectorAll('button,input');
+  controls.forEach(control => control.disabled = true);
+  progress.textContent = '読み取り準備中… 初回は時間がかかります。';
+  let worker, timer, expired = false;
+  try {
+    const deadline = new Promise((_, reject) => {
+      timer = setTimeout(() => reject(Error('読み取りがタイムアウトしました。通信環境を確認して再度お試しください。')), 90000);
+    });
+    const workerFailure = new Promise((resolve, reject) => {
+      const fail = () => reject(Error('読み取りデータを取得できません。通信環境を確認して再度お試しください。'));
+      async function run() {
+        await loadOCR();
+        if (expired) return;
+        const engine = await Tesseract.createWorker('kor+eng', 1, {
+          errorHandler: fail,
+          logger: m => {
+            if (!expired && m.status === 'recognizing text') progress.textContent = '読み取り中 ' + Math.round(m.progress * 100) + '%';
+          }
+        });
+        if (expired) { await engine.terminate(); return; }
+        worker = engine;
+        const result = await worker.recognize(image);
+        if (expired) return;
+        if (!result.data.text.trim()) throw Error('文字を読み取れませんでした。明るい場所で撮り直してください。');
+        editingId = null;
+        draft = parseReceipt(result.data.text);
+        photoData = image;
+        returnView = 'dashboard-view';
+        populateEditor();
+        scanBusy = false;
+        navTo('payment-view');
+      }
+      run().then(resolve, reject);
+    });
+    await Promise.race([workerFailure, deadline]);
+    progress.textContent = '写真はブラウザ内で読み取ります。';
+  } catch (error) {
+    if (!window.Tesseract) { loader = null; document.querySelector('script[data-ocr-loader]')?.remove(); }
+    progress.textContent = error.message || '読み取りできませんでした。撮り直してください。';
+  } finally {
+    expired = true;
+    clearTimeout(timer);
+    if (worker) worker.terminate().catch(() => {});
+    scanBusy = false;
+    controls.forEach(control => control.disabled = false);
+    if ($('scan-view').classList.contains('active') && !document.hidden) startCamera();
+  }
+}
+function captureReceipt(){const video=$('camera-feed');if(!stream || !video.videoWidth || video.readyState < 2){$('native-camera').click();return;}const canvas=$('camera-canvas');const scale=Math.min(1,1800/video.videoWidth);canvas.width=video.videoWidth*scale;canvas.height=video.videoHeight*scale;canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);recognizeImage(canvas.toDataURL('image/jpeg',.9));}
 async function photoFile(e){const f=e.target.files[0];e.target.value='';if(!f)return;if(!f.type.startsWith('image/')){notify('画像ファイルを選んでください。');return;}if(f.size>15*1024*1024){notify('15MB以下の画像を選んでください。');return;}const reader=new FileReader();reader.onload=()=>recognizeImage(reader.result);reader.onerror=()=>notify('写真を開けませんでした。');reader.readAsDataURL(f);}
 // Start app
 try{const saved=localStorage.getItem(KEY);if(saved)db=validateDB(JSON.parse(saved));}catch{notify('保存済みデータを読み込めません。上書き防止のため、この画面での保存を停止しました。');document.querySelectorAll('button,input,select').forEach(e=>e.disabled=true);throw Error('Stored data is invalid or unavailable');}
 $('confirm-date').oninput=syncMeta;$('confirm-store').oninput=syncMeta;$('edit-method').onchange=syncMeta;
 $('add-item').onclick=()=>{draft.items.push({name:'',price:0,category:$('confirm-category').value});renderItems();};
 $('apply-category').onclick=()=>{draft.items.forEach(i=>i.category=$('confirm-category').value);renderItems();};
-$('history-search').oninput=renderHistory;$('add-category-form').onsubmit=addCategory;$('manual-rate-form').onsubmit=manualRate;$('refresh-rate').onclick=()=>{if(autoFX())refreshRate({force:true,announce:true});else enableAutoFX();};$('enable-auto-rate').onclick=enableAutoFX;$('photo-file').onchange=photoFile;
+$('history-search').oninput=renderHistory;$('add-category-form').onsubmit=addCategory;$('manual-rate-form').onsubmit=manualRate;$('refresh-rate').onclick=()=>{if(autoFX())refreshRate({force:true,announce:true});else enableAutoFX();};$('enable-auto-rate').onclick=enableAutoFX;$('photo-file').onchange=photoFile;$('native-camera').onchange=photoFile;
 $('confirm-back').onclick=()=>{syncMeta();navTo(editingId?'history-view':'payment-view');};
-window.addEventListener('pagehide',()=>{stopCamera();cancelFX();});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCamera();else refreshRate();});window.addEventListener('focus',()=>refreshRate());window.addEventListener('pageshow',()=>refreshRate());window.addEventListener('online',()=>{if(autoFX())refreshRate({force:true});});window.addEventListener('offline',()=>{fxError='オフライン';updateFXDisplays();});setInterval(()=>refreshRate(),FX_INTERVAL);renderDashboard();if(autoFX())refreshRate({force:true});
+window.addEventListener('pagehide',()=>{stopCamera();cancelFX();});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCamera();else {refreshRate();if(!scanBusy && $('scan-view').classList.contains('active'))startCamera();}});window.addEventListener('focus',()=>refreshRate());window.addEventListener('pageshow',()=>refreshRate());window.addEventListener('online',()=>{if(autoFX())refreshRate({force:true});});window.addEventListener('offline',()=>{fxError='オフライン';updateFXDisplays();});setInterval(()=>refreshRate(),FX_INTERVAL);renderDashboard();if(autoFX())refreshRate({force:true});
 
     </script>
 </body>
