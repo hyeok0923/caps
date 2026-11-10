@@ -100,58 +100,12 @@ main{width:100%;padding-bottom:calc(120px + env(safe-area-inset-bottom))}.fixed.
             </div>
 
             <div class="fixed bottom-0 left-0 right-0 frosted border-t border-hairline py-4 px-6 flex justify-center z-40 max-w-[414px] mx-auto">
-                <button onclick="navTo('scan-view')" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 shadow-sm w-full font-medium">
-                    レシート撮影 (Scan Receipt)
-                </button>
+                <label class="bg-action text-white rounded-pill text-center" style="position:relative;display:block;padding:13px;flex:1">レシート撮影<input aria-label="レシートを撮影" type="file" accept="image/*" capture="environment" onchange="scanPhoto(this)" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer"></label><label style="position:relative;display:block;padding:13px">写真を選ぶ<input aria-label="写真を選ぶ" type="file" accept="image/*" onchange="scanPhoto(this)" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer"></label>
             </div>
         </div>
 
         <!-- SCAN VIEW -->
-        <div id="scan-view" class="view">
-            <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
-                <button onclick="navTo('dashboard-view')" class="text-action text-body active:opacity-50 transition-opacity">
-                    <span class="mr-1">‹</span>戻る
-                </button>
-                <h1 class="text-tagline mx-auto pr-8">レシート撮影</h1>
-            </div>
-
-            <div class="px-6 py-8">
-                <div class="bg-canvas border border-hairline rounded-apple p-[24px] flex flex-col items-center justify-center min-h-[400px]">
-                    <div class="w-full h-[300px] bg-black border border-hairline rounded-lg flex items-center justify-center relative mb-6 overflow-hidden">
-                        <video id="camera-feed" class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted playsinline></video>
-                        <canvas id="camera-canvas" class="hidden"></canvas>
-                        
-                        <div id="camera-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none z-20 transition-opacity duration-75"></div>
-
-                        <div id="scan-loading-overlay" class="absolute inset-0 bg-white hidden flex-col items-center justify-center z-30 transition-opacity duration-300 opacity-0">
-                            <svg class="animate-spin h-8 w-8 text-black mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            <p class="text-caption text-ink font-medium">レシートを分析中...</p>
-                        </div>
-
-                        <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-white opacity-80 z-10"></div>
-                        <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-white opacity-80 z-10"></div>
-                        <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-white opacity-80 z-10"></div>
-                        <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-white opacity-80 z-10"></div>
-                        
-                        <div id="camera-overlay-text" class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 bg-black/20">
-                            <p class="text-caption text-white text-center px-8 font-medium">
-                                レシート全体を写してください<br>(Scan the entire receipt)
-                            </p>
-                        </div>
-                    </div>
-
-                    <button onclick="simulateScan()" class="bg-action text-white rounded-pill px-[22px] py-[11px] text-body active:scale-95 transition-transform duration-100 font-medium">
-                        Capture
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- PAYMENT VIEW -->
-        <div id="payment-view" class="view">
+        <div id="scan-view" class="view p-6"><p id="scan-message" role="status"></p><button onclick="navTo('dashboard-view')">戻る</button></div><div id="payment-view" class="view">
             <div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-4">
                 <button onclick="navTo('scan-view')" class="text-action text-body active:opacity-50 transition-opacity">
                     <span class="mr-1">‹</span>戻る
@@ -382,7 +336,7 @@ main{width:100%;padding-bottom:calc(120px + env(safe-area-inset-bottom))}.fixed.
 
         function navTo(viewId) {
             if (viewId === 'scan-view') {
-                startCamera();
+                stopCamera();
             } else {
                 stopCamera();
             }
@@ -428,114 +382,50 @@ main{width:100%;padding-bottom:calc(120px + env(safe-area-inset-bottom))}.fixed.
             }
         }
 
-        async function simulateScan() {
-            const flash = document.getElementById('camera-flash');
-            flash.classList.remove('opacity-0');
-            flash.classList.add('opacity-100');
-            
-            setTimeout(() => {
-                flash.classList.remove('opacity-100');
-                flash.classList.add('opacity-0');
-            }, 100);
+        const db={categories:['food','cafe','shopping','transport','stay','tour','beauty','health','other'].map(id=>({id}))};
+const today=()=>new Date().toLocaleDateString('sv-SE');
+const validPrice=n=>Number.isSafeInteger(n)&&n>=0;
+function inferCategory(name){const rules=[['cafe',/녹차|말차|에스프레소|스무디|주스|커피|카페|라테|라떼|아메리카노|coffee|cafe|コーヒー|ラテ|카푸치노/i],['health',/이비인후과|병원|의원|진료|약국|의약|비타민|pharmacy|薬|サプリ/i],['beauty',/미용|헤어|네일|美容|サロン/i],['transport',/택시|지하철|버스|철도|교통|taxi|t-money|交通|地下鉄|電車/i],['stay',/호텔|숙박|hotel|宿泊|ホテル/i],['tour',/입장|티켓|박물관|관광|museum|ticket|入場|観光/i],['shopping',/양말|바지|신발|가방|인형|기념품|문구|볼펜|화장품|마스크팩|립|셔츠|쇼핑|올리브|cosmetic|shirt|化粧|リップ/i],['food',/과자|초콜릿|초코|스낵|도시락|샌드위치|생수|음료|요거트|계란|계란|바나나|사과|돼지|소고기|두부|맥주|소주|식당|음식|김밥|밥|라면|치킨|고기|빵|우유|식품|restaurant|bread|food|食事|パン|牛乳/i]];return rules.find(([id,re])=>db.categories.some(c=>c.id===id)&&re.test(name))?.[0]||'other';}
+function parseReceipt(text){const lines=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);const dateMatch=text.match(/(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})/);const items=[];
+let printedTotal=null, pendingName='';
+for (const rawLine of lines) {
+const line=rawLine.replace(/[₩￦]/g,' ').replace(/(?<=\d)[，](?=\d)/g,',').trim();
+if(/총\s*액|합\s*계|결제\s*금액|total|合計/i.test(line)){const m=line.match(/([0-9][0-9,]*)\s*(?:원|₩|KRW)?\s*$/i);if(m)printedTotal=Number(m[1].replace(/,/g,''));continue;}if(/부가세|과세|면세|공급가|거스름|받은|카드|승인|사업자|전화|할인|VAT|TAX|현금|번호|적립|포인트|TEL/i.test(line))continue;const m=line.match(/^(.+?)\s+(?:[0-9,]+\s+\d+\s+)?([0-9][0-9,]*)\s*(?:원|₩|KRW)?\s*$/i);if(!m) {
+ if (/^[\d,]+(?:\s+[\d,]+)*$/.test(line) && pendingName) {
+   const values=line.split(/\s+/);
+   const price=Number(values[values.length-1].replace(/,/g,''));
+   if(validPrice(price)&&price>0)items.push({name:pendingName,price,category:inferCategory(pendingName)});
+   pendingName='';
+ } else if (/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(line) && !/상품명|단가|수량|금액|영수증|receipt|주소|합계/i.test(line)) {
+   pendingName=line.replace(/^\d+[.)]\s*/,'');
+ }
+ continue;
+}
+pendingName='';
+const name=m[1].replace(/^\d+[.)]\s*/,'').trim(),price=Number(m[2].replace(/,/g,''));if(!/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(name)||!validPrice(price)||price===0||/\d{2}[:\-/]\d/.test(line))continue;items.push({name,price,category:inferCategory(name)});}
+const clinic=lines.find(line=>/[가-힣]*(?:이비인후과|병원|의원)/.test(line));
+const store=clinic||lines.find(x=>/[가-힣ぁ-んァ-ヶa-zA-Z]/.test(x)&&!(/영수증|receipt|매출|사업자|TEL|전화|주소/i.test(x))&&!(/\d{3,}/.test(x)))||'';
+return {store,date:dateMatch?`${dateMatch[1]}-${dateMatch[2].padStart(2,'0')}-${dateMatch[3].padStart(2,'0')}`:today(),method:'cash',items:items.length?items:[{name:store||'',price:printedTotal||0,category:inferCategory(store)}],source:'ocr',printedTotal,ocrText:text};}
 
-            const video = document.getElementById('camera-feed');
-            const canvas = document.getElementById('camera-canvas');
-            let base64ImageData = null;
-            
-            if (video && video.videoWidth > 0) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                base64ImageData = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
-                video.pause();
-            }
-
-            const loadingOverlay = document.getElementById('scan-loading-overlay');
-            loadingOverlay.classList.remove('hidden');
-            setTimeout(() => loadingOverlay.classList.remove('opacity-0'), 10); 
-
-            try {
-                if (!base64ImageData) throw new Error("No camera data available");
-
-                const payload = {
-                    contents: [
-                        {
-                            role: "user",
-                            parts: [
-                                { text: "Analyze this receipt and extract details. Categorize strictly into one of these four categories: '음식', '쇼핑', '교통비', '숙박'." },
-                                {
-                                    inlineData: {
-                                        mimeType: "image/jpeg",
-                                        data: base64ImageData
-                                    }
-                                }
-                            ]
-                        }
-                    ],
-                    generationConfig: {
-                        responseMimeType: "application/json",
-                        responseSchema: {
-                            type: "OBJECT",
-                            properties: {
-                                date: { type: "STRING" },
-                                storeName: { type: "STRING" },
-                                category: { type: "STRING", enum: ["음식", "쇼핑", "교통비", "숙박"] },
-                                items: {
-                                    type: "ARRAY",
-                                    items: {
-                                        type: "OBJECT",
-                                        properties: {
-                                            name: { type: "STRING" },
-                                            price: { type: "NUMBER" }
-                                        }
-                                    }
-                                },
-                                totalAmount: { type: "NUMBER" }
-                            },
-                            required: ["date", "storeName", "category", "items", "totalAmount"]
-                        }
-                    }
-                };
-
-                const apiKey = ""; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-                
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
-                    const parsedData = JSON.parse(result.candidates[0].content.parts[0].text);
-                    state.currentReceipt = {
-                        store: parsedData.storeName || "不明な店舗",
-                        category: parsedData.category || "음식",
-                        date: parsedData.date || "2026.11.03",
-                        items: parsedData.items || [],
-                        total: parsedData.totalAmount || 0
-                    };
-                } else {
-                    throw new Error("Invalid response format from Gemini");
-                }
-
-            } catch (err) {
-                console.error("Gemini API Error, falling back to mock data:", err);
-                const randomIdx = Math.floor(Math.random() * mockReceipts.length);
-                state.currentReceipt = mockReceipts[randomIdx];
-            }
-
-            loadingOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-                populateDynamicData();
-                navTo('payment-view');
-            }, 300);
-        }
-
-        function updateRadioUI(selectedMethod) {
+let scanToken=0;
+async function scanPhoto(input){
+ const file=input.files[0];input.value='';if(!file)return;
+ const token=++scanToken;navTo('scan-view');
+ const msg=document.getElementById('scan-message');msg.textContent='写真を読み取り中…';
+ let worker;
+ try{
+ if(!window.Tesseract)await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';script.onload=resolve;script.onerror=reject;document.head.append(script)});
+ worker=await Tesseract.createWorker('kor+eng');const result=await worker.recognize(file);
+ if(token!==scanToken||!document.getElementById('scan-view').classList.contains('active'))return;
+ if(!result.data.text.trim())throw Error();
+ const parsed=parseReceipt(result.data.text);
+ const category=({food:'음식',cafe:'음식',transport:'교통비',stay:'숙박'})[parsed.items[0].category]||'쇼핑';
+ state.currentReceipt={...parsed,category,total:parsed.items.reduce((sum,item)=>sum+item.price,0)};
+ populateDynamicData();navTo('payment-view');
+ }catch{if(token===scanToken)msg.textContent='読み取れませんでした。戻って別の写真でお試しください。';}
+ finally{if(worker)await worker.terminate();}
+}
+function updateRadioUI(selectedMethod) {
             state.pendingPaymentMethod = selectedMethod;
             
             const methods = ['cash', 'wowpass', 'card'];
