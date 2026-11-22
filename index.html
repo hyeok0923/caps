@@ -28,7 +28,21 @@
         * { -ms-overflow-style: none; scrollbar-width: none; }
     .field{display:block;width:100%;min-width:0;border:1px solid #d5d5d7;background:white;border-radius:9px;padding:10px;font-size:14px;color:#1d1d1f}.item-card,.history-card{border:1px solid #e0e0e0;background:white;border-radius:12px;padding:14px;margin-bottom:12px}.item-controls{display:grid;grid-template-columns:1fr 1.3fr auto;gap:8px;margin-top:10px;align-items:center}.small-button{background:#0066cc;color:white;padding:10px 13px;border-radius:999px;font-size:13px;white-space:nowrap}.history-open{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:10px}.history-open strong{overflow-wrap:anywhere}.detail-row{display:flex;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid #e0e0e0}.category-row{display:flex;gap:10px;margin-bottom:12px}button:disabled{opacity:.5;cursor:wait}#status:empty{display:none}#status{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);width:380px;background:#1d1d1f;color:white;border-radius:12px;padding:12px 16px;font-size:12px;z-index:60;pointer-events:none}#receipt-preview{max-height:200px;width:100%;object-fit:contain;margin-bottom:16px}input,select{min-width:0}#ocr-text{white-space:pre-wrap;font-size:12px;user-select:text}.view{padding-bottom:16px}@media(max-width:360px){.item-controls{grid-template-columns:1fr}.history-open{align-items:flex-start}.history-open strong{font-size:15px}}@media(prefers-reduced-motion:reduce){.view.active{animation:none}}
 .simple-header{height:82px;padding:0 24px;display:flex;justify-content:space-between;align-items:center}.simple-header h1{font-size:21px;font-weight:600;letter-spacing:-.5px}.settings-button{font-size:13px;color:#707078;background:#e9e9ed;padding:8px 14px;border-radius:999px}.simple-home{padding:42px 28px 36px;text-align:center}.home-kicker{font-size:14px;color:#7a7a7a;margin-bottom:28px}.home-balance{background:#fff;border:1px solid #e8e8ec;border-radius:22px;padding:32px 16px 29px}.home-label{font-size:13px;color:#7a7a7a;margin-bottom:12px}.home-balance h2{font-size:48px;font-weight:600;line-height:1.15;letter-spacing:-1.6px;font-variant-numeric:tabular-nums}.home-yen{font-size:15px;color:#7a7a7a;margin-top:13px}.home-rate{font-size:10px;color:#85858d;margin:14px 0 32px;line-height:1.5}.home-primary{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;border-radius:999px;background:#0066cc;color:white;padding:16px;font-weight:600;font-size:16px}.home-secondary{width:100%;border:1px solid #ceced3;border-radius:999px;padding:15px;margin-top:12px;font-size:15px;color:#1d1d1f}.home-history{font-size:13px;color:#0066cc;padding:13px;margin-top:20px}.settings-list{border-radius:16px;background:white;border:1px solid #e0e0e0;overflow:hidden}.settings-list button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:22px;text-align:left}.settings-list button+button{border-top:1px solid #e0e0e0}.settings-note{font-size:12px;line-height:1.6;color:#7a7a7a;margin:24px 4px}.history-breakdown{border:1px solid #e0e0e0;border-radius:12px;padding:15px;background:white;margin-bottom:20px}.history-breakdown summary,.bulk-category summary{font-size:13px;color:#0066cc;cursor:pointer}.payment-breakdown{margin-top:18px;font-size:13px}.payment-breakdown>div{display:flex;justify-content:space-between;margin-top:10px}.bulk-category{padding:15px 0;border-bottom:1px solid #e0e0e0}.bulk-category>div{border:0;padding-bottom:0}#status{bottom:20px}main.max-w-\[414px\]{padding-bottom:20px!important}.home-secondary:hover,.settings-button:hover{background:#e9e9ed}.home-primary:hover{background:#0057b1}@media(max-width:360px){.simple-home{padding:26px 20px}.home-balance h2{font-size:42px}}</style>
-<style>#dashboard-view{padding-bottom:95px}</style></head>
+<style>#dashboard-view{padding-bottom:95px}</style><style>
+:root{--plum:#574964;--rose:#9F8383;--soft:#C8AAAA;--peach:#FFDAB3}
+body,main{background:#f8f2ef!important;color:var(--plum)!important}
+.bg-action,.small-button{background:var(--plum)!important}.text-action{color:var(--plum)!important}
+.journal-hero{padding:26px 24px 20px;background:var(--plum);color:var(--peach);border-radius:0 0 28px 28px}
+.journal-hero h2{font-size:29px;letter-spacing:-1px}.journal-hero p{font-size:13px;margin-top:8px;line-height:1.7}
+.journal-tabs{display:flex;gap:8px;padding:16px 24px}.journal-tabs button{flex:1;border:1px solid var(--soft);border-radius:99px;padding:10px;font-size:14px}
+.journal-body{padding:0 24px 100px}.journal-date{font-size:14px;padding:22px 0 12px;color:var(--rose)}
+.memory-card{background:#fffaf6;border:1px solid #e5d7d2;border-radius:20px;overflow:hidden;margin-bottom:18px;box-shadow:0 5px 20px #57496408}
+.memory-photo{display:block;width:100%;max-height:330px;object-fit:cover}.memory-copy{padding:18px}.memory-copy h3{font-size:19px}.memory-note{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.8;margin-top:10px}.memory-price{margin-top:12px;font-size:15px;color:var(--rose)}
+.memory-button{border:0;background:transparent;color:var(--plum);padding:10px 0;font-size:13px}
+.memory-form{margin:20px 0;padding:18px;background:#f6eeea;border-radius:16px}.memory-form label{display:block;font-size:13px;margin:12px 0 6px}.memory-form textarea{min-height:85px;resize:vertical}.memory-empty{padding:42px 15px;text-align:center;line-height:1.9;color:var(--rose)}
+#memory-image{width:100%;max-height:240px;object-fit:cover;border-radius:12px;margin-top:12px}
+#journal-count{font-size:12px;color:var(--rose);padding:0 24px}
+</style></head>
 <body class="font-sans text-body select-none">
 
     <!-- App Container -->
@@ -43,7 +57,7 @@
                 </button>
             </div>
 
-            <div class="px-6 py-8 text-center">
+            <div class="journal-hero"><h2>Receipt + Fit!</h2><p>旅の思い出を、使ったお金と一緒に。</p><button class="memory-button" style="color:#FFDAB3" onclick="navTo('journal-view')">旅のアルバムを見る →</button></div><div class="px-6 py-8 text-center">
                 <p class="text-strong text-muted mb-2">総支出 (Total Expenses)</p>
                 <h2 class="text-hero tracking-tighter" id="dash-total">₩0</h2><p id="dash-yen"></p><small id="rate-summary"></small>
             </div>
@@ -217,7 +231,18 @@
 <section id="detail-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('history-view')" class="text-action">‹ 一覧</button><h1 class="text-tagline mx-auto">記録の詳細</h1></div><div class="px-6 py-6"><div id="detail-content" class="bg-canvas border border-hairline rounded-apple p-6"></div><button id="detail-edit" class="small-button w-full mt-6">この記録を再編集</button></div></section>
 <section id="settings-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('dashboard-view')" class="text-action">‹ ホーム</button><h1 class="text-tagline mx-auto">設定</h1></div><div class="px-6 py-8"><div class="settings-list"><button onclick="navTo('rate-view')"><span>為替レート</span><span aria-hidden="true">›</span></button><button onclick="navTo('categories-view')"><span>カテゴリー</span><span aria-hidden="true">›</span></button></div><p class="settings-note">記録はこの端末のブラウザに保存されます。</p></div></section><section id="categories-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('settings-view')" class="text-action">‹ 設定</button><h1 class="text-tagline mx-auto">カテゴリー管理</h1></div><div class="px-6 py-6"><p class="text-caption text-muted mb-5">名前の変更は保存済みの記録にも反映されます。</p><div id="category-list"></div><form id="add-category-form" class="mt-6"><label for="new-category" class="text-caption">新しいカテゴリー</label><input id="new-category" class="field mt-2" maxlength="40" required placeholder="例：おみやげ"><button class="small-button mt-3 w-full" type="submit">カテゴリーを追加</button></form></div></section>
 <section id="rate-view" class="view"><div class="h-[52px] frosted sticky top-0 z-40 border-b border-hairline flex items-center px-6"><button onclick="navTo('settings-view')" class="text-action">‹ 設定</button><h1 class="text-tagline mx-auto">為替 · 원/엔</h1></div><div class="px-6 py-6"><p id="rate-info" class="text-body mb-3" aria-live="polite"></p><p id="fx-mode" class="text-caption text-muted mb-4"></p><button id="enable-auto-rate" class="small-button w-full mb-3" hidden>自動更新をONにする</button><button id="refresh-rate" class="small-button w-full">最新の参考レートを取得</button><p class="text-caption text-muted mt-4 mb-6">起動時・画面に戻った時・表示中は5分ごとに更新します。Frankfurterの参考レートで、秒単位の市場価格ではありません。実際の両替・カード請求額とは異なります。円換算には現在設定のレートを使います。</p><form id="manual-rate-form" class="bg-canvas border border-hairline rounded-apple p-6"><label for="manual-rate">100円あたりのウォン（₩）</label><input id="manual-rate" type="number" min="0.01" max="100000" step="0.01" required class="field mt-3" placeholder="例：950"><button type="submit" class="small-button mt-4 w-full">手動で保存（自動更新OFF）</button></form></div></section>
-    </main>
+    <section id="journal-view" class="view">
+<header class="journal-hero"><button onclick="navTo('dashboard-view')" style="color:inherit">‹ ホーム</button><h2>旅のアルバム</h2><p>思い出を、使ったお金と一緒に。</p></header>
+<div class="journal-tabs"><button onclick="beginEntry()">＋ 支出を記録</button><button onclick="openMemory()">＋ 思い出だけ</button></div>
+<p id="journal-count"></p><div id="journal-list" class="journal-body"></div></section>
+<section id="memory-view" class="view"><header class="journal-hero"><button onclick="navTo('journal-view')">‹ アルバム</button><h2>思い出を残す</h2></header>
+<form id="memory-form" class="journal-body"><div class="memory-form">
+<label for="memory-title">場所・タイトル</label><input id="memory-title" class="field" required maxlength="100">
+<label for="memory-date">日付</label><input id="memory-date" class="field" type="date" required>
+<label for="memory-note">ひとこと</label><textarea id="memory-note" class="field" maxlength="1500"></textarea>
+<label for="memory-file">写真を追加</label><input id="memory-file" class="field" type="file" accept="image/*">
+<img id="memory-image" hidden alt="選択した写真"><button type="button" id="memory-remove" class="memory-button">写真を外す</button>
+</div><button class="small-button" id="memory-save">保存する</button><button type="button" id="memory-delete" class="memory-button" style="margin-left:20px">記録を削除</button></form></section></main>
 
     <div id="status" role="status" aria-live="polite"></div>
     <script>
@@ -290,19 +315,19 @@ async function startCamera() {
     hint.textContent = '下の撮影ボタンでカメラを開くか、写真を選んでください。';
   }
 }
-function navTo(id){if(scanBusy)return;if(id!=='scan-view')stopCamera();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));if(id==='scan-view')startCamera();if(id==='dashboard-view')renderDashboard();if(id==='history-view')renderHistory();if(id==='categories-view')renderCategories();if(id==='rate-view')renderRate(true);if(id==='payment-view'&&draft){$('payment-store-name').textContent=draft.store||'新しい記録';$('payment-total-amount').textContent=money(receiptTotal(draft));updateRadioUI(draft.method);}window.scrollTo(0,0);}
+function navTo(id){if(scanBusy)return;if(id!=='scan-view')stopCamera();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));if(id==='scan-view')startCamera();if(id==='dashboard-view')renderDashboard();if(id==='history-view')renderHistory();if(id==='journal-view')renderJournal();if(id==='categories-view')renderCategories();if(id==='rate-view')renderRate(true);if(id==='payment-view'&&draft){$('payment-store-name').textContent=draft.store||'新しい記録';$('payment-total-amount').textContent=money(receiptTotal(draft));updateRadioUI(draft.method);}window.scrollTo(0,0);}
 function renderDashboard(){const a=aggregate(db.receipts);$('dash-total').textContent=money(a.total);$('dash-yen').textContent=yen(a.total);for(const m of ['cash','wowpass','card'])$('dash-'+m).textContent=money(a[m]);$('rate-summary').textContent=rateSummary();const box=$('category-summary');box.replaceChildren();for(const c of db.categories){const card=el('div','bg-canvas border border-hairline rounded-apple p-4');card.append(el('p','text-caption text-muted',c.name),el('p','text-strong text-lg mt-1',money(a.categories[c.id]||0)));box.append(card);} $('history-count').textContent=`記録を見る（${db.receipts.length}件）`;}
 function beginEntry(r=null){editingId=r?.id||null;draft=r?clone(r):{store:'',date:today(),method:'cash',items:[{name:'',price:0,category:'other'}],source:'manual'};returnView=r?'history-view':'dashboard-view';photoData=null;$('confirm-heading').textContent=r?'記録を再編集':'内容を確認';$('confirm-save').textContent=r?'変更を保存':'記録を保存';populateEditor();navTo('confirm-view');}
 function updateRadioUI(method){if(draft)draft.method=method;document.querySelectorAll('input[name=payment]').forEach(input=>{input.checked=input.value===method;});for(const m of ['cash','wowpass','card']){const dot=$('radio-'+m);dot.classList.toggle('bg-action',m===method);dot.classList.toggle('bg-transparent',m!==method);dot.parentElement.classList.toggle('border-action',m===method);dot.parentElement.classList.toggle('border-hairline',m!==method);}}
 function categoryOptions(select,value){select.replaceChildren();for(const c of db.categories){const option=el('option','',c.name);option.value=c.id;select.append(option);}select.value=db.categories.some(c=>c.id===value)?value:db.categories[0].id;}
-function populateEditor(){if(!draft)return;$('confirm-date').value=draft.date;$('confirm-store').value=draft.store;categoryOptions($('confirm-category'),draft.items[0]?.category||'other');$('edit-method').value=draft.method;const preview=$('receipt-preview');preview.hidden=!photoData;if(photoData)preview.src=photoData;$('ocr-note').textContent=draft.source==='ocr'?'読み取りと自動分類は推定です。品目・金額・カテゴリーを確認してください。写真原本は保存しません。':'品目ごとにカテゴリーを設定できます。';$('ocr-raw').hidden=!draft.ocrText;$('ocr-text').textContent=draft.ocrText||'';renderItems();}
+function populateEditor(){if(!draft)return;renderAttachment();$('confirm-date').value=draft.date;$('confirm-store').value=draft.store;categoryOptions($('confirm-category'),draft.items[0]?.category||'other');$('edit-method').value=draft.method;const preview=$('receipt-preview');preview.hidden=!photoData;if(photoData)preview.src=photoData;$('ocr-note').textContent=draft.source==='ocr'?'読み取りと自動分類は推定です。品目・金額・カテゴリーを確認してください。写真原本は保存しません。':'品目ごとにカテゴリーを設定できます。';$('ocr-raw').hidden=!draft.ocrText;$('ocr-text').textContent=draft.ocrText||'';renderItems();}
 function syncMeta(){if(!draft)return;draft.store=$('confirm-store').value;draft.date=$('confirm-date').value;draft.method=$('edit-method').value;}
 function renderItems(){const box=$('confirm-items-container');box.replaceChildren();draft.items.forEach((item,index)=>{const card=el('div','item-card');const name=el('input','field');name.value=item.name;name.placeholder='品目名 / 품목명';name.setAttribute('aria-label',`品目名 ${index+1}`);name.maxLength=100;name.oninput=()=>item.name=name.value;const price=el('input','field');price.type='number';price.min='0';price.max='100000000';price.step='1';price.inputMode='numeric';price.value=item.price;price.setAttribute('aria-label',`金額 ${index+1}`);price.oninput=()=>{item.price=price.value===''?NaN:Number(price.value);updateEditorTotal();};const select=el('select','field');select.setAttribute('aria-label',`カテゴリー ${index+1}`);categoryOptions(select,item.category);select.onchange=()=>item.category=select.value;const remove=el('button','text-action text-caption','削除');remove.type='button';remove.setAttribute('aria-label',`品目 ${index+1} を削除`);remove.onclick=()=>{draft.items.splice(index,1);renderItems();};const row=el('div','item-controls');row.append(price,select,remove);card.append(name,row);box.append(card);});updateEditorTotal();}
 function updateEditorTotal(){const n=receiptTotal(draft);$('confirm-total').value=Number.isFinite(n)?n:0;$('confirm-yen').textContent=yen(Number.isFinite(n)?n:0);$('ocr-warning').textContent=draft.printedTotal&&draft.printedTotal!==n?`印字合計 ${money(draft.printedTotal)} と品目合計が違います。割引・税・読み取り結果を確認してください。`:'';}
 function finalizeTransaction(){if(!draft)return;syncMeta();try{saveRecord(draft,editingId);draft=null;editingId=null;notify('保存しました。 / 저장했어요.');navTo('dashboard-view');}catch(e){handleError(e);}}
 function renderHistory(){const box=$('history-list');box.replaceChildren();const search=$('history-search').value.trim().toLowerCase();const list=db.receipts.filter(r=>r.store.toLowerCase().includes(search)||r.items.some(i=>i.name.toLowerCase().includes(search))).slice().sort((a,b)=>b.date.localeCompare(a.date)||b.updatedAt.localeCompare(a.updatedAt));if(!list.length)box.append(el('p','text-muted py-8','記録がありません。 / 내역이 없어요.'));for(const r of list){const card=el('div','history-card');const button=el('button','history-open');button.type='button';const info=el('div');info.append(el('strong','',r.store),el('p','text-caption text-muted',`${r.date} · ${methodName(r.method)} · ${r.items.length}品目`));const amount=el('div','text-right');amount.append(el('strong','',money(receiptTotal(r))),el('p','text-caption text-muted',yen(receiptTotal(r))));button.append(info,amount);button.onclick=()=>showDetail(r.id);card.append(button);box.append(card);}}
 function methodName(m){return {cash:'現金',wowpass:'WOWPASS',card:'クレジットカード'}[m]||m;}
-function showDetail(id){const r=db.receipts.find(x=>x.id===id);if(!r)return;const box=$('detail-content');box.replaceChildren();box.append(el('h2','text-tagline mb-2',r.store),el('p','text-caption text-muted',`${r.date} · ${methodName(r.method)}`));for(const i of r.items){const row=el('div','detail-row');const left=el('div');left.append(el('strong','',i.name),el('p','text-caption text-muted',categoryName(i.category)));row.append(left,el('span','',money(i.price)));box.append(row);}const converted=el('p','text-muted',yen(receiptTotal(r)));converted.id='detail-yen';converted.dataset.receiptId=r.id;box.append(el('p','text-display mt-6',money(receiptTotal(r))),converted);$('detail-edit').onclick=()=>beginEntry(r);navTo('detail-view');}
+function showDetail(id){const r=db.receipts.find(x=>x.id===id);if(!r)return;const box=$('detail-content');box.replaceChildren();box.append(el('h2','text-tagline mb-2',r.store),el('p','text-caption text-muted',`${r.date} · ${methodName(r.method)}`));for(const i of r.items){const row=el('div','detail-row');const left=el('div');left.append(el('strong','',i.name),el('p','text-caption text-muted',categoryName(i.category)));row.append(left,el('span','',money(i.price)));box.append(row);}const converted=el('p','text-muted',yen(receiptTotal(r)));converted.id='detail-yen';converted.dataset.receiptId=r.id;box.append(el('p','text-display mt-6',money(receiptTotal(r))),converted);$('detail-edit').onclick=()=>beginEntry(r);appendMemory(box,r);navTo('detail-view');}
 function renderCategories(){const box=$('category-list');box.replaceChildren();for(const c of db.categories){const row=el('form','category-row');const input=el('input','field');input.value=c.name;input.maxLength=40;input.required=true;input.setAttribute('aria-label','カテゴリー名 '+c.name);const save=el('button','small-button','変更');save.type='submit';row.append(input,save);row.onsubmit=e=>{e.preventDefault();const name=input.value.trim();if(!name)return;try{if(db.categories.some(x=>x.id!==c.id&&x.name.toLowerCase()===name.toLowerCase()))throw Error('同じ名前のカテゴリーがあります。');const next=clone(db);next.categories.find(x=>x.id===c.id).name=name;persist(next);notify('カテゴリー名を変更しました。過去の記録にも反映されます。');renderCategories();}catch(e){handleError(e);}};box.append(row);}}
 function addCategory(e){e.preventDefault();const name=$('new-category').value.trim();try{if(!name)return;if(db.categories.length>=40)throw Error('カテゴリーは40個までです。');if(db.categories.some(c=>c.name.toLowerCase()===name.toLowerCase()))throw Error('同じカテゴリーがあります。');const next=clone(db);next.categories.push({id:uid(),name});persist(next);$('new-category').value='';renderCategories();notify('カテゴリーを追加しました。');}catch(e){handleError(e);}}
 const FX_INTERVAL=5*60*1000;
@@ -373,6 +398,75 @@ async function recognizeImage(image) {
 }
 function captureReceipt(){const video=$('camera-feed');if(!stream || !video.videoWidth || video.readyState < 2){$('native-camera').click();return;}const canvas=$('camera-canvas');const scale=Math.min(1,1800/video.videoWidth);canvas.width=video.videoWidth*scale;canvas.height=video.videoHeight*scale;canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);recognizeImage(canvas.toDataURL('image/jpeg',.9));}
 async function photoFile(e){const f=e.target.files[0];e.target.value='';if(!f)return;if(!f.type.startsWith('image/')){notify('画像ファイルを選んでください。');return;}if(f.size>15*1024*1024){notify('15MB以下の画像を選んでください。');return;}const reader=new FileReader();reader.onload=()=>recognizeImage(reader.result);reader.onerror=()=>notify('写真を開けませんでした。');reader.readAsDataURL(f);}
+
+let memoryDraft=null, imageBusy=false;
+function safePhoto(value){return typeof value==='string'&&/^data:image\/(jpeg|png|webp);base64,/.test(value);}
+function appendMemory(box,record){
+ if(safePhoto(record.photo)){const image=el('img','memory-photo');image.src=record.photo;image.alt=record.store||record.title||'旅の写真';box.append(image);}
+ if(record.note)box.append(el('p','memory-note',record.note));
+}
+function renderJournal(){
+ const entries=[...db.receipts.map(r=>({...r,isExpense:true})),...(db.memories||[])].sort((a,b)=>b.date.localeCompare(a.date));
+ const list=$('journal-list');list.replaceChildren();$('journal-count').textContent=entries.length+'件の記録';
+ if(!entries.length)list.append(el('p','memory-empty','最初の思い出を残しましょう。写真とひとことだけでも。'));
+ let date='';
+ for(const record of entries){
+  if(date!==record.date){date=record.date;list.append(el('h3','journal-date',date));}
+  const card=el('article','memory-card');if(safePhoto(record.photo)){const image=el('img','memory-photo');image.src=record.photo;image.alt=record.store||record.title;image.loading='lazy';card.append(image);}
+  const copy=el('div','memory-copy');copy.append(el('h3','',record.store||record.title));
+  if(record.note)copy.append(el('p','memory-note',record.note));
+  if(record.isExpense)copy.append(el('p','memory-price',money(receiptTotal(record))+' · '+yen(receiptTotal(record))));
+  const edit=el('button','memory-button',record.isExpense?'支出・思い出を編集 →':'思い出を編集 →');
+  edit.onclick=()=>record.isExpense?beginEntry(db.receipts.find(r=>r.id===record.id)):openMemory(record);
+  copy.append(edit);card.append(copy);list.append(card);
+ }
+}
+async function compressPhoto(file){
+ if(!file||file.size>20*1024*1024)throw Error('20MB以下の写真を選んでください。');
+ const url=URL.createObjectURL(file);
+ try{
+  const image=new Image();await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(Error('この写真を開けません。JPEGまたはPNGでお試しください。'));image.src=url;});
+  const scale=Math.min(1,1000/Math.max(image.width,image.height)),canvas=document.createElement('canvas');
+  canvas.width=Math.round(image.width*scale);canvas.height=Math.round(image.height*scale);canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);
+  return canvas.toDataURL('image/jpeg',0.72);
+ }finally{URL.revokeObjectURL(url);}
+}
+async function attachPhoto(input,target,preview,button){
+ const file=input.files[0];input.value='';if(!file)return;
+ imageBusy=true;button.disabled=true;
+ try{target.photo=await compressPhoto(file);preview.src=target.photo;preview.hidden=false;}
+ catch(error){notify(error.message);}
+ finally{imageBusy=false;button.disabled=false;}
+}
+function renderAttachment(){
+ let panel=$('expense-memory');
+ if(!panel){
+  panel=el('div','memory-form');panel.id='expense-memory';
+  panel.innerHTML='<label for="expense-note">この日の思い出（任意）</label><textarea id="expense-note" class="field" maxlength="1500" placeholder="おいしかったもの、また行きたい場所…"></textarea><label for="expense-photo">写真を追加（任意）</label><input id="expense-photo" class="field" type="file" accept="image/*"><img id="expense-image" class="memory-photo" hidden alt="旅の写真"><button id="expense-remove" class="memory-button" type="button">写真を外す</button>';
+  $('confirm-store').parentElement.after(panel);
+  $('expense-note').oninput=()=>{if(draft)draft.note=$('expense-note').value;};
+  $('expense-photo').onchange=()=>attachPhoto($('expense-photo'),draft,$('expense-image'),$('confirm-save'));
+  $('expense-remove').onclick=()=>{draft.photo=null;$('expense-image').hidden=true;};
+ }
+ $('expense-note').value=draft.note||'';$('expense-image').hidden=!safePhoto(draft.photo);if(safePhoto(draft.photo))$('expense-image').src=draft.photo;
+}
+function openMemory(record=null){
+ memoryDraft=record?clone(record):{id:uid(),date:today(),title:'',note:'',photo:null};
+ $('memory-title').value=memoryDraft.title;$('memory-date').value=memoryDraft.date;$('memory-note').value=memoryDraft.note||'';
+ $('memory-image').hidden=!safePhoto(memoryDraft.photo);if(safePhoto(memoryDraft.photo))$('memory-image').src=memoryDraft.photo;
+ $('memory-delete').hidden=!record;navTo('memory-view');
+}
+$('memory-file').onchange=()=>attachPhoto($('memory-file'),memoryDraft,$('memory-image'),$('memory-save'));
+$('memory-remove').onclick=()=>{memoryDraft.photo=null;$('memory-image').hidden=true;};
+$('memory-form').onsubmit=event=>{
+ event.preventDefault();if(imageBusy)return;
+ const title=$('memory-title').value.trim(),date=$('memory-date').value;if(!title||!date)return;
+ const next=clone(db),record={...memoryDraft,title,date,note:$('memory-note').value,updatedAt:new Date().toISOString()};
+ next.memories=(next.memories||[]).filter(r=>r.id!==record.id);next.memories.push(record);
+ try{persist(next);navTo('journal-view');notify('思い出を保存しました。');}catch{notify('保存容量が足りません。写真を減らして再度お試しください。');}
+};
+$('memory-delete').onclick=()=>{if(!confirm('この思い出を削除しますか？'))return;try{const next=clone(db);next.memories=(next.memories||[]).filter(r=>r.id!==memoryDraft.id);persist(next);navTo('journal-view');}catch{notify('削除を保存できませんでした。');}};
+
 // Start app
 try{const saved=localStorage.getItem(KEY);if(saved)db=validateDB(JSON.parse(saved));}catch{notify('保存済みデータを読み込めません。上書き防止のため、この画面での保存を停止しました。');document.querySelectorAll('button,input,select').forEach(e=>e.disabled=true);throw Error('Stored data is invalid or unavailable');}
 $('confirm-date').oninput=syncMeta;$('confirm-store').oninput=syncMeta;$('edit-method').onchange=syncMeta;
